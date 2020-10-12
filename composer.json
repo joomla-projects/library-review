@@ -1,0 +1,9 @@
+{
+    "name": "joomla-projects/library-review",
+    "description": "Repository to store our results from the investigation of the usability of external libraries as a replacement for our own. These results consist mainly of text and code.",
+    "type": "research",
+    "require-dev": {
+        "joomla/http": "~1.0",
+        "joomla/registry": "^1.6"
+    }
+}
