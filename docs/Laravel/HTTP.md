@@ -25,6 +25,8 @@ Constructor.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$options` | `\Joomla\Registry\Registry` | Client options object. If the registry contains any headers.* elements, these will be added to the request headers. |
 | `$transport` | `\Joomla\CMS\Http\TransportInterface` | The HTTP transport object. |
 
@@ -47,6 +49,8 @@ Method to send the DELETE command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
 | `$timeout` | `integer` | Read timeout in seconds. |
@@ -74,6 +78,8 @@ Method to send the GET command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
 | `$timeout` | `integer` | Read timeout in seconds. |
@@ -92,6 +98,8 @@ Get an option from the HTTP client.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$key` | `string` | The name of the option to get. |
 
 **Response**
@@ -108,6 +116,8 @@ Method to send the HEAD command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
 | `$timeout` | `integer` | Read timeout in seconds. |
@@ -126,6 +136,8 @@ Method to send the OPTIONS command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
 | `$timeout` | `integer` | Read timeout in seconds. |
@@ -144,6 +156,8 @@ Method to send the PATCH command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$data` | `mixed` | Either an associative array or a string to be sent with the request. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
@@ -163,6 +177,8 @@ Method to send the POST command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$data` | `mixed` | Either an associative array or a string to be sent with the request. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request |
@@ -182,6 +198,8 @@ Method to send the PUT command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$data` | `mixed` | Either an associative array or a string to be sent with the request. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
@@ -201,6 +219,8 @@ Set an option for the HTTP client.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$key` | `string` | The name of the option to set. |
 | `$value` | `mixed` | The option value to set. |
 
@@ -218,6 +238,8 @@ Method to send the TRACE command to the server.
 
 **Arguments**
 
+| Argument | Type | Description |
+|----------|------|-------------|
 | `$url` | `string` | Path to the resource. |
 | `$headers` | `array` | An array of name-value pairs to include in the header of the request. |
 | `$timeout` | `integer` | Read timeout in seconds. |
