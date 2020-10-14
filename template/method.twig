@@ -1,0 +1,94 @@
+#### `{{ class.class.name }}::{{ method.name }}`
+
+{{ getDescriptionFromDocblock(method) | raw }}
+
+{% if method.isDeprecated %}
+This method has been deprecated and does not need to be replaced.
+{% elseif method.getDeclaringClass.getName != class.class.name %}
+This method is inherited from `{{ method.getDeclaringClass.getName }}`.
+{% else %}
+##### Signature
+
+{% apply spaceless %}
+```php
+{% if method.isAbstract %}abstract {% endif %}
+{% if method.isFinal %}final {% endif %}
+{% if method.isPublic %}public {% endif %}
+{% if method.isProtected %}protected {% endif %}
+{% if method.isStatic %}static {% endif %}
+{{ class.class.name}}::{{ method.name }} ({% if method.getNumberOfParameters == 0 %}
+ void{% else %}
+{% set separator = '' %}
+{% set close = '' %}
+{% for param in method.getParameters %}
+{% if param.isOptional %} [{% set close = ']' ~ close %}{% endif %}
+{{ separator }} {{ getParamType(method, param.getName, class.uses) }} ${{ param.getName }}{% set separator = ',' %}
+{% endfor %} {{ close }}{% endif %} ) : {{ getReturnType(method, class.uses) }}
+```
+{% endapply %}
+
+##### Parameters
+
+{% if method.getNumberOfParameters > 0 %}
+| Parameter | Type | Description |
+|----------|------|-------------|
+{% endif %}
+{% for param in method.getParameters %}
+| `{{ param.getName }}` | `{{ getParamType(method, param.getName, class.uses) | replace({'|': '` or `'}) | raw }}` | {{ getParamDescription(method, param.getName) | raw }}{% if param.isOptional %} Defaults to `{{ getDefault(param) | raw }}`.{% endif %} |
+{% else %}
+This method has no parameters.
+{% endfor %}
+
+##### Return Values
+
+{% if not method.hasReturnType and getReturnType(method, class.uses) == 'void' %}
+No value is returned.
+{% else %}
+`{{ getReturnType(method, class.uses) | replace({'|': '` or `'}) }}` {{ getReturnDescription(method) | raw }}
+{% endif %}
+
+##### Errors/Exceptions
+
+{% for exception in getExceptions(method, class.uses) %}
+Throws {{ exception.class }} {{ exception.description }}<br />
+{% else %}
+No errors or exceptions are thrown.
+{% endfor %}
+
+##### Examples
+
+###### Test Title
+
+{{ package.name | title }}:
+```php
+// @todo (Automatically) add code from test
+```
+
+{{ replacement }}:
+```php
+// @todo Rewrite test code using {{ replacement }}
+```
+    
+##### Drop-In Adapter
+
+The drop-in adapter has the same signature as the original {{ class.name }} method,
+but leverages the corresponding {{ replacement }} package behind the scene.
+ 
+{% apply spaceless %}
+```php
+{{ getDocBlock(method, "/**\n *\n */") | replace({'\t': ''}) | raw }} 
+{% if method.isAbstract %}abstract {% endif %}
+{% if method.isFinal %}final {% endif %}
+{% if method.isPublic %}public {% endif %}
+{% if method.isProtected %}protected {% endif %}
+{% if method.isStatic %}static {% endif %}
+{{ method.name }}({% set separator = '' %}
+{% for param in method.getParameters %}
+{{ separator }}{{ getParamType(method, param.getName, class.uses) }} ${{ param.getName }}{% if param.isOptional %} = {{ getDefault(param) | raw }}{% endif %}
+{% set separator = ', ' %}{% endfor %}) : {{ getReturnType(method, class.uses) }}
+{
+    // @todo Add adapter code.
+}
+```
+{% endapply %}
+{% endif %}

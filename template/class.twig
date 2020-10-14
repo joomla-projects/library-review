@@ -1,0 +1,54 @@
+# {{ package.name | title }} Package version {{ package.version }}
+
+{{ package.description }}
+
+## Interfaces
+
+{% for class in package.classes %}
+{% if class.class.isInterface %}
+### The {{ class.class.name }} Interface
+
+{{ getDescriptionFromDocblock(class.class) | raw }}
+
+{% for method in class.class.getMethods %}
+{% if not method.isPrivate %}
+{% include('method.twig') %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+## Classes
+
+{% for class in package.classes %}
+{% if not class.class.isInterface and not class.class.isTrait %}
+### The {{ class.class.name }} Class
+
+{{ getDescriptionFromDocblock(class.class) | raw }}
+
+{% for method in class.class.getMethods %}
+{% if not method.isPrivate %}
+{% include('method.twig') %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+## Traits
+
+{% for class in package.classes %}
+{% if class.class.isTrait %}
+### The {{ class.class.name }} Trait
+
+{{ getDescriptionFromDocblock(class.class) | raw }}
+
+{% for method in class.class.getMethods %}
+{% if not method.isPrivate %}
+{% include('method.twig') %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% endfor %}
