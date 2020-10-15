@@ -277,6 +277,18 @@ class TwigExtensions
     }
 
     /**
+     * @param $class
+     * @param $method
+     * @param $samples
+     *
+     * @return array
+     */
+    public static function getSamplesFor($class, $method, $samples)
+    {
+        return $samples[$class . '::' . $method] ?? [];
+    }
+
+    /**
      * @param string          $type
      * @param ReflectionClass $declaringClass
      * @param array           $uses

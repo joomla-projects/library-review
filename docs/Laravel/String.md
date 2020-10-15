@@ -43,18 +43,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -122,18 +110,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -196,18 +172,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -260,18 +224,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -326,18 +278,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -392,18 +332,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -459,18 +387,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -527,18 +443,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -592,18 +496,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -657,18 +549,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -726,18 +606,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -793,18 +661,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -858,18 +714,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -926,18 +770,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -995,18 +827,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1062,18 +882,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1126,18 +934,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1191,18 +987,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1259,18 +1043,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1326,18 +1098,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1392,18 +1152,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1458,18 +1206,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1524,18 +1260,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1590,18 +1314,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1652,18 +1364,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1715,18 +1415,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1782,18 +1470,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1846,18 +1522,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1903,18 +1567,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -1964,18 +1616,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2022,18 +1662,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2080,18 +1708,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2138,18 +1754,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2195,18 +1799,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2252,18 +1844,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2310,18 +1890,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2367,18 +1935,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2424,18 +1980,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2481,18 +2025,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2538,18 +2070,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2612,18 +2132,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2682,18 +2190,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2739,18 +2235,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2796,18 +2280,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2853,18 +2325,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2910,18 +2370,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,
@@ -2967,18 +2415,6 @@ No errors or exceptions are thrown.
 
 ##### Examples
 
-###### Test Title
-
-Joomla/String:
-```php
-// @todo (Automatically) add code from test
-```
-
-Laravel:
-```php
-// @todo Rewrite test code using Laravel
-```
-    
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original  method,

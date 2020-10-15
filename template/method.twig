@@ -56,19 +56,21 @@ No errors or exceptions are thrown.
 {% endfor %}
 
 ##### Examples
+{% for sample in getSamplesFor(class.class.name, method.name, samples) %}
 
-###### Test Title
+###### {{ sample.title | title }}
 
 {{ package.name | title }}:
 ```php
-// @todo (Automatically) add code from test
+{{ sample.code | raw }}
 ```
 
-{{ replacement }}:
+{{ replacement | title }}:
 ```php
 // @todo Rewrite test code using {{ replacement }}
 ```
-    
+{% endfor %}
+
 ##### Drop-In Adapter
 
 The drop-in adapter has the same signature as the original {{ class.name }} method,
