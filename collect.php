@@ -9,6 +9,7 @@ use Twig\Loader\FilesystemLoader;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+echo "Scanning packages ...\n";
 $composerFile = new ComposerLockFile(__DIR__ . '/composer.lock');
 $packages     = $composerFile->getPackageInfo('joomla/');
 $target       = 'Laravel';
@@ -25,21 +26,22 @@ $twig   = new Environment(
 TwigExtensions::extend($twig);
 
 foreach ($packages as $package) {
+    echo "Processing package {$package['name']} ...\n";
     $path = getStorageLocation($package, $target);
 
-    #print_r($package);
-    $template = $twig->load('class.twig');
+    $template = $twig->load('package.twig');
     file_put_contents(
         $path . '.md',
-        $template->render(
+        trim(preg_replace("~(\s*\n){3,}~", "\n\n", $template->render(
             [
                 'package'     => $package,
                 'replacement' => $target,
                 'samples'     => $samples,
             ]
-        )
+        ))) . "\n"
     );
 }
+echo "Done.\n";
 
 /**
  * @param array  $package

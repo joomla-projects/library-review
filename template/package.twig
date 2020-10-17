@@ -1,0 +1,46 @@
+# {{ package.name | title }} Package version {{ package.version }}
+
+{{ package.description }}
+
+{% set deprecated = true %}
+{% for class in package.classes %}
+{% if not isDeprecated(class.class) %}
+{% set deprecated = false %}
+{% endif %}
+{% endfor %}
+{% if deprecated %}
+This package has been deprecated.
+
+Does not need to be replaced.
+{% else %}
+
+{# Interfaces #}
+{% for class in package.classes %}
+{% if class.class.isInterface %}
+## The {{ class.class.name }} Interface
+
+{% include('class.twig') %}
+{% endif %}
+    
+{% endfor %}
+
+{# Classes #}
+{% for class in package.classes %}
+{% if not class.class.isInterface and not class.class.isTrait %}
+## The {{ class.class.name }} Class
+
+{% include('class.twig') %}
+{% endif %}
+    
+{% endfor %}
+
+{# Traits #}
+{% for class in package.classes %}
+{% if class.class.isTrait %}
+## The {{ class.class.name }} Trait
+
+{% include('class.twig') %}
+{% endif %}
+    
+{% endfor %}
+{% endif %}

@@ -2,14 +2,16 @@
 
 Joomla String Package
 
-## Interfaces
-
-
-## Classes
-
-### The Joomla\String\StringHelper Class
+## The Joomla\String\StringHelper Class
 
 String handling class for UTF-8 data wrapping the phputf8 library. All functions assume the validity of UTF-8 strings.
+
+### Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| protected static `$incrementStyles` | `array` | Increment styles. |    
+### Methods
 
 #### `Joomla\String\StringHelper::increment`
 
@@ -17,13 +19,13 @@ Increments a trailing number in a string.
 
 Used to easily create distinct labels when copying objects. The method has the following styles:
 
-default: "Label" becomes "Label (2)" 
+default: "Label" becomes "Label (2)"
 dash:    "Label" becomes "Label-2"
 
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::increment ( string $string [, string $style [, int $n ]] ) : string
+public static Joomla\String\StringHelper::increment ( string $string [, string $style = &#039;default&#039; [, int $n = 0 ]] ) : string
 ```
 ##### Parameters
 
@@ -64,9 +66,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The incremented string.
  *
  * @since   1.3.0
- */ 
-public static increment(string $string, string $style = 'default', int $n = 0) : string
-{
+ */
+public static function increment(string $string, string $style = 'default', int $n = 0) : string{
     // @todo Add adapter code.
 }
 ```
@@ -74,19 +75,19 @@ public static increment(string $string, string $style = 'default', int $n = 0) :
 
 Tests whether a string contains only 7bit ASCII bytes.
 
-You might use this to conditionally check whether a string needs handling as UTF-8 or not, potentially offering performance 
+You might use this to conditionally check whether a string needs handling as UTF-8 or not, potentially offering performance
 benefits by using the native PHP equivalent if it's just ASCII e.g.;
 
-<code> 
-if (StringHelper::is_ascii($someString)) 
-{ 
-    // It's just ASCII - use the native PHP version 
-    $someString = strtolower($someString); 
-} 
-else 
-{ 
-    $someString = StringHelper::strtolower($someString); 
-} 
+<code>
+if (StringHelper::is_ascii($someString))
+{
+// It's just ASCII - use the native PHP version
+$someString = strtolower($someString);
+}
+else
+{
+$someString = StringHelper::strtolower($someString);
+}
 </code>
 
 ##### Signature
@@ -139,9 +140,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean True if the string is all ASCII
  *
  * @since   1.3.0
- */ 
-public static is_ascii(string $str) : bool
-{
+ */
+public static function is_ascii(string $str) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -160,7 +160,7 @@ public static Joomla\String\StringHelper::ord ( string $chr  ) : int
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `chr` | `string` | UTF-8 encoded character. |
+| `chr` | `string` | UTF-8 encoded character |
 
 ##### Return Values
 
@@ -189,9 +189,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/ord
  * @since   1.4.0
- */ 
-public static ord(string $chr) : int
-{
+ */
+public static function ord(string $chr) : int{
     // @todo Add adapter code.
 }
 ```
@@ -204,15 +203,15 @@ Find position of first occurrence of a string.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::strpos ( string $str, string $search [, int $offset ] ) : int|bool
+public static Joomla\String\StringHelper::strpos ( string $str, string $search [, int $offset = false ] ) : int|bool
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String being examined. |
-| `search` | `string` | String being searched for. |
-| `offset` | `int` | Optional, specifies the position from which the search should be performed. Defaults to `false`. |
+| `str` | `string` | String being examined |
+| `search` | `string` | String being searched for |
+| `offset` | `int` | Optional, specifies the position from which the search should be performed Defaults to `false`. |
 
 ##### Return Values
 
@@ -243,9 +242,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strpos
  * @since   1.3.0
- */ 
-public static strpos(string $str, string $search, int $offset = false) : int|bool
-{
+ */
+public static function strpos(string $str, string $search, int $offset = false) : int|bool{
     // @todo Add adapter code.
 }
 ```
@@ -258,7 +256,7 @@ Finds position of last occurrence of a string.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::strrpos ( string $str, string $search [, int $offset ] ) : int|bool
+public static Joomla\String\StringHelper::strrpos ( string $str, string $search [, int $offset = 0 ] ) : int|bool
 ```
 ##### Parameters
 
@@ -297,9 +295,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strrpos
  * @since   1.3.0
- */ 
-public static strrpos(string $str, string $search, int $offset = 0) : int|bool
-{
+ */
+public static function strrpos(string $str, string $search, int $offset = 0) : int|bool{
     // @todo Add adapter code.
 }
 ```
@@ -312,15 +309,15 @@ Return part of a string given character offset (and optionally length).
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::substr ( string $str, int $offset [, int $length ] ) : string|bool
+public static Joomla\String\StringHelper::substr ( string $str, int $offset [, int $length = false ] ) : string|bool
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String being processed. |
-| `offset` | `int` | Number of UTF-8 characters offset (from left). |
-| `length` | `int` | Optional length in UTF-8 characters from offset. Defaults to `false`. |
+| `str` | `string` | String being processed |
+| `offset` | `int` | Number of UTF-8 characters offset (from left) |
+| `length` | `int` | Optional length in UTF-8 characters from offset Defaults to `false`. |
 
 ##### Return Values
 
@@ -351,9 +348,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/substr
  * @since   1.3.0
- */ 
-public static substr(string $str, int $offset, int $length = false) : string|bool
-{
+ */
+public static function substr(string $str, int $offset, int $length = false) : string|bool{
     // @todo Add adapter code.
 }
 ```
@@ -363,7 +359,7 @@ UTF-8 aware alternative to strtolower()
 
 Make a string lowercase
 
-Note: The concept of a characters "case" only exists is some alphabets such as Latin, Greek, Cyrillic, Armenian and archaic Georgian - it does 
+Note: The concept of a characters "case" only exists is some alphabets such as Latin, Greek, Cyrillic, Armenian and archaic Georgian - it does
 not exist in the Chinese alphabet, for example. See Unicode Standard Annex #21: Case Mappings
 
 ##### Signature
@@ -375,7 +371,7 @@ public static Joomla\String\StringHelper::strtolower ( string $str  ) : string|b
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String being processed. |
+| `str` | `string` | String being processed |
 
 ##### Return Values
 
@@ -407,9 +403,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strtolower
  * @since   1.3.0
- */ 
-public static strtolower(string $str) : string|bool
-{
+ */
+public static function strtolower(string $str) : string|bool{
     // @todo Add adapter code.
 }
 ```
@@ -419,7 +414,7 @@ UTF-8 aware alternative to strtoupper()
 
 Make a string uppercase
 
-Note: The concept of a characters "case" only exists is some alphabets such as Latin, Greek, Cyrillic, Armenian and archaic Georgian - it does 
+Note: The concept of a characters "case" only exists is some alphabets such as Latin, Greek, Cyrillic, Armenian and archaic Georgian - it does
 not exist in the Chinese alphabet, for example. See Unicode Standard Annex #21: Case Mappings
 
 ##### Signature
@@ -431,7 +426,7 @@ public static Joomla\String\StringHelper::strtoupper ( string $str  ) : string|b
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String being processed. |
+| `str` | `string` | String being processed |
 
 ##### Return Values
 
@@ -463,9 +458,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strtoupper
  * @since   1.3.0
- */ 
-public static strtoupper(string $str) : string|bool
-{
+ */
+public static function strtoupper(string $str) : string|bool{
     // @todo Add adapter code.
 }
 ```
@@ -513,9 +507,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strlen
  * @since   1.3.0
- */ 
-public static strlen(string $str) : int
-{
+ */
+public static function strlen(string $str) : int{
     // @todo Add adapter code.
 }
 ```
@@ -528,16 +521,16 @@ Case-insensitive version of str_replace()
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::str_ireplace ( string $search, string $replace, string $str [, int $count ] ) : string
+public static Joomla\String\StringHelper::str_ireplace ( string $search, string $replace, string $str [, int $count = null ] ) : string
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `search` | `string` | String to search. |
-| `replace` | `string` | Existing string to replace. |
-| `str` | `string` | New string to replace with. |
-| `count` | `int` | Optional count value to be passed by referene. Defaults to `null`. |
+| `search` | `string` | String to search |
+| `replace` | `string` | Existing string to replace |
+| `str` | `string` | New string to replace with |
+| `count` | `int` | Optional count value to be passed by referene Defaults to `null`. |
 
 ##### Return Values
 
@@ -569,9 +562,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/str_ireplace
  * @since   1.3.0
- */ 
-public static str_ireplace(string $search, string $replace, string $str, int $count = null) : string
-{
+ */
+public static function str_ireplace(string $search, string $replace, string $str, int $count = null) : string{
     // @todo Add adapter code.
 }
 ```
@@ -579,13 +571,13 @@ public static str_ireplace(string $search, string $replace, string $str, int $co
 
 UTF-8 aware alternative to str_pad()
 
-Pad a string to a certain length with another string. 
+Pad a string to a certain length with another string.
 $padStr may contain multi-byte characters.
 
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::str_pad ( string $input, int $length [, string $padStr [, int $type ]] ) : string
+public static Joomla\String\StringHelper::str_pad ( string $input, int $length [, string $padStr = &#039; &#039; [, int $type = 1 ]] ) : string
 ```
 ##### Parameters
 
@@ -594,7 +586,7 @@ public static Joomla\String\StringHelper::str_pad ( string $input, int $length [
 | `input` | `string` | The input string. |
 | `length` | `int` | If the value is negative, less than, or equal to the length of the input string, no padding takes place. |
 | `padStr` | `string` | The string may be truncated if the number of padding characters can't be evenly divided by the string's length. Defaults to `' '`. |
-| `type` | `int` | The type of padding to apply. Defaults to `1`. |
+| `type` | `int` | The type of padding to apply Defaults to `1`. |
 
 ##### Return Values
 
@@ -627,9 +619,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/str_pad
  * @since   1.4.0
- */ 
-public static str_pad(string $input, int $length, string $padStr = ' ', int $type = 1) : string
-{
+ */
+public static function str_pad(string $input, int $length, string $padStr = ' ', int $type = 1) : string{
     // @todo Add adapter code.
 }
 ```
@@ -642,14 +633,14 @@ Convert a string to an array.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::str_split ( string $str [, int $splitLen ] ) : array
+public static Joomla\String\StringHelper::str_split ( string $str [, int $splitLen = 1 ] ) : array
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | UTF-8 encoded string to process. |
-| `splitLen` | `int` | Number to characters to split string by. Defaults to `1`. |
+| `str` | `string` | UTF-8 encoded string to process |
+| `splitLen` | `int` | Number to characters to split string by Defaults to `1`. |
 
 ##### Return Values
 
@@ -679,9 +670,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/str_split
  * @since   1.3.0
- */ 
-public static str_split(string $str, int $splitLen = 1) : array
-{
+ */
+public static function str_split(string $str, int $splitLen = 1) : array{
     // @todo Add adapter code.
 }
 ```
@@ -694,15 +684,15 @@ A case insensitive string comparison.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::strcasecmp ( string $str1, string $str2 [, mixed $locale ] ) : int
+public static Joomla\String\StringHelper::strcasecmp ( string $str1, string $str2 [, mixed $locale = false ] ) : int
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str1` | `string` | string 1 to compare. |
-| `str2` | `string` | string 2 to compare. |
-| `locale` | `mixed` | The locale used by strcoll or false to use classical comparison. Defaults to `false`. |
+| `str1` | `string` | string 1 to compare |
+| `str2` | `string` | string 2 to compare |
+| `locale` | `mixed` | The locale used by strcoll or false to use classical comparison Defaults to `false`. |
 
 ##### Return Values
 
@@ -735,9 +725,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @link    https://www.php.net/strcoll
  * @link    https://www.php.net/setlocale
  * @since   1.3.0
- */ 
-public static strcasecmp(string $str1, string $str2, mixed $locale = false) : int
-{
+ */
+public static function strcasecmp(string $str1, string $str2, mixed $locale = false) : int{
     // @todo Add adapter code.
 }
 ```
@@ -750,15 +739,15 @@ A case sensitive string comparison.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::strcmp ( string $str1, string $str2 [, mixed $locale ] ) : int
+public static Joomla\String\StringHelper::strcmp ( string $str1, string $str2 [, mixed $locale = false ] ) : int
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str1` | `string` | string 1 to compare. |
-| `str2` | `string` | string 2 to compare. |
-| `locale` | `mixed` | The locale used by strcoll or false to use classical comparison. Defaults to `false`. |
+| `str1` | `string` | string 1 to compare |
+| `str2` | `string` | string 2 to compare |
+| `locale` | `mixed` | The locale used by strcoll or false to use classical comparison Defaults to `false`. |
 
 ##### Return Values
 
@@ -791,9 +780,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @link    https://www.php.net/strcoll
  * @link    https://www.php.net/setlocale
  * @since   1.3.0
- */ 
-public static strcmp(string $str1, string $str2, mixed $locale = false) : int
-{
+ */
+public static function strcmp(string $str1, string $str2, mixed $locale = false) : int{
     // @todo Add adapter code.
 }
 ```
@@ -806,16 +794,16 @@ Find length of initial segment not matching mask.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::strcspn ( string $str, string $mask [, int $start [, int $length ]] ) : int
+public static Joomla\String\StringHelper::strcspn ( string $str, string $mask [, int $start = null [, int $length = null ]] ) : int
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The string to process. |
-| `mask` | `string` | The mask. |
-| `start` | `int` | Optional starting character position (in characters). Defaults to `null`. |
-| `length` | `int` | Optional length. Defaults to `null`. |
+| `str` | `string` | The string to process |
+| `mask` | `string` | The mask |
+| `start` | `int` | Optional starting character position (in characters) Defaults to `null`. |
+| `length` | `int` | Optional length Defaults to `null`. |
 
 ##### Return Values
 
@@ -847,9 +835,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strcspn
  * @since   1.3.0
- */ 
-public static strcspn(string $str, string $mask, int $start = null, int $length = null) : int
-{
+ */
+public static function strcspn(string $str, string $mask, int $start = null, int $length = null) : int{
     // @todo Add adapter code.
 }
 ```
@@ -857,7 +844,7 @@ public static strcspn(string $str, string $mask, int $start = null, int $length 
 
 UTF-8 aware alternative to stristr()
 
-Returns all of haystack from the first occurrence of needle to the end. Needle and haystack are examined in a case-insensitive manner to 
+Returns all of haystack from the first occurrence of needle to the end. Needle and haystack are examined in a case-insensitive manner to
 find the first occurrence of a string using case insensitive comparison.
 
 ##### Signature
@@ -869,8 +856,8 @@ public static Joomla\String\StringHelper::stristr ( string $str, string $search 
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The haystack. |
-| `search` | `string` | The needle. |
+| `str` | `string` | The haystack |
+| `search` | `string` | The needle |
 
 ##### Return Values
 
@@ -901,9 +888,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/stristr
  * @since   1.3.0
- */ 
-public static stristr(string $str, string $search) : string
-{
+ */
+public static function stristr(string $str, string $search) : string{
     // @todo Add adapter code.
 }
 ```
@@ -922,7 +908,7 @@ public static Joomla\String\StringHelper::strrev ( string $str  ) : string
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String to be reversed. |
+| `str` | `string` | String to be reversed |
 
 ##### Return Values
 
@@ -951,9 +937,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strrev
  * @since   1.3.0
- */ 
-public static strrev(string $str) : string
-{
+ */
+public static function strrev(string $str) : string{
     // @todo Add adapter code.
 }
 ```
@@ -966,16 +951,16 @@ Find length of initial segment matching mask.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::strspn ( string $str, string $mask [, int $start [, int $length ]] ) : int
+public static Joomla\String\StringHelper::strspn ( string $str, string $mask [, int $start = null [, int $length = null ]] ) : int
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The haystack. |
-| `mask` | `string` | The mask. |
-| `start` | `int` | Start optional. Defaults to `null`. |
-| `length` | `int` | Length optional. Defaults to `null`. |
+| `str` | `string` | The haystack |
+| `mask` | `string` | The mask |
+| `start` | `int` | Start optional Defaults to `null`. |
+| `length` | `int` | Length optional Defaults to `null`. |
 
 ##### Return Values
 
@@ -1007,9 +992,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/strspn
  * @since   1.3.0
- */ 
-public static strspn(string $str, string $mask, int $start = null, int $length = null) : int
-{
+ */
+public static function strspn(string $str, string $mask, int $start = null, int $length = null) : int{
     // @todo Add adapter code.
 }
 ```
@@ -1022,16 +1006,16 @@ Replace text within a portion of a string.
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::substr_replace ( string $str, string $repl, int $start [, int $length ] ) : string
+public static Joomla\String\StringHelper::substr_replace ( string $str, string $repl, int $start [, int $length = null ] ) : string
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The haystack. |
-| `repl` | `string` | The replacement string. |
-| `start` | `int` | Start. |
-| `length` | `int` | Length (optional). Defaults to `null`. |
+| `str` | `string` | The haystack |
+| `repl` | `string` | The replacement string |
+| `start` | `int` | Start |
+| `length` | `int` | Length (optional) Defaults to `null`. |
 
 ##### Return Values
 
@@ -1063,9 +1047,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/substr_replace
  * @since   1.3.0
- */ 
-public static substr_replace(string $str, string $repl, int $start, int $length = null) : string
-{
+ */
+public static function substr_replace(string $str, string $repl, int $start, int $length = null) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1073,20 +1056,20 @@ public static substr_replace(string $str, string $repl, int $start, int $length 
 
 UTF-8 aware replacement for ltrim()
 
-Strip whitespace (or other characters) from the beginning of a string. You only need to use this if you are supplying the charlist 
+Strip whitespace (or other characters) from the beginning of a string. You only need to use this if you are supplying the charlist
 optional arg and it contains UTF-8 characters. Otherwise ltrim will work normally on a UTF-8 string.
 
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::ltrim ( string $str [, string $charlist ] ) : string
+public static Joomla\String\StringHelper::ltrim ( string $str [, string $charlist = false ] ) : string
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The string to be trimmed. |
-| `charlist` | `string` | The optional charlist of additional characters to trim. Defaults to `false`. |
+| `str` | `string` | The string to be trimmed |
+| `charlist` | `string` | The optional charlist of additional characters to trim Defaults to `false`. |
 
 ##### Return Values
 
@@ -1117,9 +1100,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/ltrim
  * @since   1.3.0
- */ 
-public static ltrim(string $str, string $charlist = false) : string
-{
+ */
+public static function ltrim(string $str, string $charlist = false) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1127,20 +1109,20 @@ public static ltrim(string $str, string $charlist = false) : string
 
 UTF-8 aware replacement for rtrim()
 
-Strip whitespace (or other characters) from the end of a string. You only need to use this if you are supplying the charlist 
+Strip whitespace (or other characters) from the end of a string. You only need to use this if you are supplying the charlist
 optional arg and it contains UTF-8 characters. Otherwise rtrim will work normally on a UTF-8 string.
 
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::rtrim ( string $str [, string $charlist ] ) : string
+public static Joomla\String\StringHelper::rtrim ( string $str [, string $charlist = false ] ) : string
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The string to be trimmed. |
-| `charlist` | `string` | The optional charlist of additional characters to trim. Defaults to `false`. |
+| `str` | `string` | The string to be trimmed |
+| `charlist` | `string` | The optional charlist of additional characters to trim Defaults to `false`. |
 
 ##### Return Values
 
@@ -1171,9 +1153,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/rtrim
  * @since   1.3.0
- */ 
-public static rtrim(string $str, string $charlist = false) : string
-{
+ */
+public static function rtrim(string $str, string $charlist = false) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1181,20 +1162,20 @@ public static rtrim(string $str, string $charlist = false) : string
 
 UTF-8 aware replacement for trim()
 
-Strip whitespace (or other characters) from the beginning and end of a string. You only need to use this if you are supplying the charlist 
+Strip whitespace (or other characters) from the beginning and end of a string. You only need to use this if you are supplying the charlist
 optional arg and it contains UTF-8 characters. Otherwise trim will work normally on a UTF-8 string
 
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::trim ( string $str [, string $charlist ] ) : string
+public static Joomla\String\StringHelper::trim ( string $str [, string $charlist = false ] ) : string
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | The string to be trimmed. |
-| `charlist` | `string` | The optional charlist of additional characters to trim. Defaults to `false`. |
+| `str` | `string` | The string to be trimmed |
+| `charlist` | `string` | The optional charlist of additional characters to trim Defaults to `false`. |
 
 ##### Return Values
 
@@ -1225,9 +1206,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/trim
  * @since   1.3.0
- */ 
-public static trim(string $str, string $charlist = false) : string
-{
+ */
+public static function trim(string $str, string $charlist = false) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1240,19 +1220,21 @@ Make a string's first character uppercase or all words' first character uppercas
 ##### Signature
 
 ```php
-public static Joomla\String\StringHelper::ucfirst ( string $str [, string $delimiter [, string $newDelimiter ]] ) : string
+public static Joomla\String\StringHelper::ucfirst ( string $str [, string $delimiter = null [, string $newDelimiter = null ]] ) : string
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String to be processed. |
-| `delimiter` | `string` | The words delimiter (null means do not split the string). Defaults to `null`. |
-| `newDelimiter` | `string` | The new words delimiter (null means equal to $delimiter). Defaults to `null`. |
+| `str` | `string` | String to be processed |
+| `delimiter` | `string` | The words delimiter (null means do not split the string) Defaults to `null`. |
+| `newDelimiter` | `string` | The new words delimiter (null means equal to $delimiter) Defaults to `null`. |
 
 ##### Return Values
 
-`string` If $delimiter is null, return the string with first character as upper case (if applicable)
+`string` If $delimiter is null, return the string with first character as upper case (if applicable) 
+else consider the string of words separated by the delimiter, apply the ucfirst to each words
+and return the string with the new delimiter
 
 ##### Errors/Exceptions
 
@@ -1281,9 +1263,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/ucfirst
  * @since   1.3.0
- */ 
-public static ucfirst(string $str, string $delimiter = null, string $newDelimiter = null) : string
-{
+ */
+public static function ucfirst(string $str, string $delimiter = null, string $newDelimiter = null) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1302,7 +1283,7 @@ public static Joomla\String\StringHelper::ucwords ( string $str  ) : string
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | String to be processed. |
+| `str` | `string` | String to be processed |
 
 ##### Return Values
 
@@ -1331,9 +1312,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @link    https://www.php.net/ucwords
  * @since   1.3.0
- */ 
-public static ucwords(string $str) : string
-{
+ */
+public static function ucwords(string $str) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1382,9 +1362,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @link    https://bugs.php.net/bug.php?id=48147
  *
  * @since   1.3.0
- */ 
-public static transcode(string $source, string $fromEncoding, string $toEncoding) : mixed
-{
+ */
+public static function transcode(string $source, string $fromEncoding, string $toEncoding) : mixed{
     // @todo Add adapter code.
 }
 ```
@@ -1434,9 +1413,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @link    https://hsivonen.fi/php-utf8/
  * @see     compliant
  * @since   1.3.0
- */ 
-public static valid(string $str) : bool
-{
+ */
+public static function valid(string $str) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -1444,9 +1422,9 @@ public static valid(string $str) : bool
 
 Tests whether a string complies as UTF-8.
 
-This will be much faster than StringHelper::valid() but will pass five and six octet UTF-8 sequences, which are not supported by Unicode and 
-so cannot be displayed correctly in a browser. In other words it is not as strict as StringHelper::valid() but it's faster. If you use it to 
-validate user input, you place yourself at the risk that attackers will be able to inject 5 and 6 byte sequences (which may or may not be a 
+This will be much faster than StringHelper::valid() but will pass five and six octet UTF-8 sequences, which are not supported by Unicode and
+so cannot be displayed correctly in a browser. In other words it is not as strict as StringHelper::valid() but it's faster. If you use it to
+validate user input, you place yourself at the risk that attackers will be able to inject 5 and 6 byte sequences (which may or may not be a
 significant risk, depending on what you are are doing).
 
 ##### Signature
@@ -1458,7 +1436,7 @@ public static Joomla\String\StringHelper::compliant ( string $str  ) : bool
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | UTF-8 string to check. |
+| `str` | `string` | UTF-8 string to check |
 
 ##### Return Values
 
@@ -1491,9 +1469,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @see     StringHelper::valid
  * @link    https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php#54805
  * @since   1.3.0
- */ 
-public static compliant(string $str) : bool
-{
+ */
+public static function compliant(string $str) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -1510,7 +1487,7 @@ public static Joomla\String\StringHelper::unicode_to_utf8 ( string $str  ) : str
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | Unicode string to convert. |
+| `str` | `string` | Unicode string to convert |
 
 ##### Return Values
 
@@ -1536,9 +1513,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  UTF-8 string
  *
  * @since   1.3.0
- */ 
-public static unicode_to_utf8(string $str) : string
-{
+ */
+public static function unicode_to_utf8(string $str) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1555,7 +1531,7 @@ public static Joomla\String\StringHelper::unicode_to_utf16 ( string $str  ) : st
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `str` | `string` | Unicode string to convert. |
+| `str` | `string` | Unicode string to convert |
 
 ##### Return Values
 
@@ -1581,17 +1557,19 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  UTF-16 string
  *
  * @since   1.3.0
- */ 
-public static unicode_to_utf16(string $str) : string
-{
+ */
+public static function unicode_to_utf16(string $str) : string{
     // @todo Add adapter code.
 }
 ```
-### The Joomla\String\Inflector Class
+
+## The Joomla\String\Inflector Class
 
 Joomla Framework String Inflector Class
 
 The Inflector transforms words
+
+### Methods
 
 #### `Joomla\String\Inflector::__construct`
 
@@ -1626,17 +1604,11 @@ but leverages the corresponding Laravel package behind the scene.
  * Protected constructor.
  *
  * @since  1.0
- */ 
-protected __construct() : void
-{
+ */
+protected function __construct() : void{
     // @todo Add adapter code.
 }
 ```
-
-
-
-
-
 #### `Joomla\String\Inflector::addCountableRule`
 
 Adds a countable word.
@@ -1676,9 +1648,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  Inflector  Returns this object to support chaining.
  *
  * @since   1.0
- */ 
-public addCountableRule(mixed $data) : Joomla\String\Inflector
-{
+ */
+public function addCountableRule(mixed $data) : Joomla\String\Inflector{
     // @todo Add adapter code.
 }
 ```
@@ -1689,7 +1660,7 @@ Adds a specific singular-plural pair for a word.
 ##### Signature
 
 ```php
-public Joomla\String\Inflector::addWord ( string $singular [, string $plural ] ) : Joomla\String\Inflector
+public Joomla\String\Inflector::addWord ( string $singular [, string $plural = null ] ) : Joomla\String\Inflector
 ```
 ##### Parameters
 
@@ -1723,9 +1694,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  Inflector  Returns this object to support chaining.
  *
  * @since   1.0
- */ 
-public addWord(string $singular, string $plural = null) : Joomla\String\Inflector
-{
+ */
+public function addWord(string $singular, string $plural = null) : Joomla\String\Inflector{
     // @todo Add adapter code.
 }
 ```
@@ -1768,9 +1738,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  Inflector  Returns this object to support chaining.
  *
  * @since   1.0
- */ 
-public addPluraliseRule(mixed $data) : Joomla\String\Inflector
-{
+ */
+public function addPluraliseRule(mixed $data) : Joomla\String\Inflector{
     // @todo Add adapter code.
 }
 ```
@@ -1813,9 +1782,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  Inflector  Returns this object to support chaining.
  *
  * @since   1.0
- */ 
-public addSingulariseRule(mixed $data) : Joomla\String\Inflector
-{
+ */
+public function addSingulariseRule(mixed $data) : Joomla\String\Inflector{
     // @todo Add adapter code.
 }
 ```
@@ -1826,13 +1794,13 @@ Gets an instance of the JStringInflector singleton.
 ##### Signature
 
 ```php
-public static Joomla\String\Inflector::getInstance ( [ bool $new ] ) : Joomla\String\Inflector
+public static Joomla\String\Inflector::getInstance ( [ bool $new = false ] ) : Joomla\String\Inflector
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `new` | `bool` | If true (default is false), returns a new instance regardless if one exists. Defaults to `false`. |
+| `new` | `bool` | If true (default is false), returns a new instance regardless if one exists.  This argument is mainly used for testing. Defaults to `false`. |
 
 ##### Return Values
 
@@ -1859,9 +1827,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  Inflector
  *
  * @since   1.0
- */ 
-public static getInstance(bool $new = false) : Joomla\String\Inflector
-{
+ */
+public static function getInstance(bool $new = false) : Joomla\String\Inflector{
     // @todo Add adapter code.
 }
 ```
@@ -1904,9 +1871,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean  True if word is countable, false otherwise.
  *
  * @since   1.0
- */ 
-public isCountable(string $word) : bool
-{
+ */
+public function isCountable(string $word) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -1949,9 +1915,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean  True if word is plural, false if not.
  *
  * @since   1.0
- */ 
-public isPlural(string $word) : bool
-{
+ */
+public function isPlural(string $word) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -1994,9 +1959,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean  True if word is singular, false if not.
  *
  * @since   1.0
- */ 
-public isSingular(string $word) : bool
-{
+ */
+public function isSingular(string $word) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -2039,9 +2003,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string|boolean  An inflected string, or false if no rule could be applied.
  *
  * @since   1.0
- */ 
-public toPlural(string $word) : string|bool
-{
+ */
+public function toPlural(string $word) : string|bool{
     // @todo Add adapter code.
 }
 ```
@@ -2084,15 +2047,17 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string|boolean  An inflected string, or false if no rule could be applied.
  *
  * @since   1.0
- */ 
-public toSingular(string $word) : string|bool
-{
+ */
+public function toSingular(string $word) : string|bool{
     // @todo Add adapter code.
 }
 ```
-### The Joomla\String\Normalise Class
+
+## The Joomla\String\Normalise Class
 
 Joomla Framework String Normalise Class
+
+### Methods
 
 #### `Joomla\String\Normalise::fromCamelCase`
 
@@ -2100,12 +2065,12 @@ Convert a string from camel case.
 
 This method offers two modes. Grouped allows for splitting on groups of uppercase characters as follows:
 
-"FooBarABCDef"            becomes  array("Foo", "Bar", "ABC", "Def") 
-"JFooBar"                 becomes  array("J", "Foo", "Bar") 
-"J001FooBar002"           becomes  array("J001", "Foo", "Bar002") 
-"abcDef"                  becomes  array("abc", "Def") 
-"abc_defGhi_Jkl"          becomes  array("abc_def", "Ghi_Jkl") 
-"ThisIsA_NASAAstronaut"   becomes  array("This", "Is", "A_NASA", "Astronaut")) 
+"FooBarABCDef"            becomes  array("Foo", "Bar", "ABC", "Def")
+"JFooBar"                 becomes  array("J", "Foo", "Bar")
+"J001FooBar002"           becomes  array("J001", "Foo", "Bar002")
+"abcDef"                  becomes  array("abc", "Def")
+"abc_defGhi_Jkl"          becomes  array("abc_def", "Ghi_Jkl")
+"ThisIsA_NASAAstronaut"   becomes  array("This", "Is", "A_NASA", "Astronaut"))
 "JohnFitzgerald_Kennedy"  becomes  array("John", "Fitzgerald_Kennedy"))
 
 Non-grouped will split strings at each uppercase character.
@@ -2113,7 +2078,7 @@ Non-grouped will split strings at each uppercase character.
 ##### Signature
 
 ```php
-public static Joomla\String\Normalise::fromCamelCase ( string $input [, bool $grouped ] ) : string
+public static Joomla\String\Normalise::fromCamelCase ( string $input [, bool $grouped = false ] ) : string
 ```
 ##### Parameters
 
@@ -2159,9 +2124,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The space separated string.
  *
  * @since   1.0
- */ 
-public static fromCamelCase(string $input, bool $grouped = false) : string
-{
+ */
+public static function fromCamelCase(string $input, bool $grouped = false) : string{
     // @todo Add adapter code.
 }
 ```
@@ -2204,9 +2168,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The camel case string.
  *
  * @since   1.0
- */ 
-public static toCamelCase(string $input) : string
-{
+ */
+public static function toCamelCase(string $input) : string{
     // @todo Add adapter code.
 }
 ```
@@ -2249,9 +2212,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The dash separated string.
  *
  * @since   1.0
- */ 
-public static toDashSeparated(string $input) : string
-{
+ */
+public static function toDashSeparated(string $input) : string{
     // @todo Add adapter code.
 }
 ```
@@ -2294,9 +2256,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The space separated string.
  *
  * @since   1.0
- */ 
-public static toSpaceSeparated(string $input) : string
-{
+ */
+public static function toSpaceSeparated(string $input) : string{
     // @todo Add adapter code.
 }
 ```
@@ -2339,9 +2300,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The underscore separated string.
  *
  * @since   1.0
- */ 
-public static toUnderscoreSeparated(string $input) : string
-{
+ */
+public static function toUnderscoreSeparated(string $input) : string{
     // @todo Add adapter code.
 }
 ```
@@ -2384,9 +2344,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The variable string.
  *
  * @since   1.0
- */ 
-public static toVariable(string $input) : string
-{
+ */
+public static function toVariable(string $input) : string{
     // @todo Add adapter code.
 }
 ```
@@ -2429,12 +2388,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string  The key string.
  *
  * @since   1.0
- */ 
-public static toKey(string $input) : string
-{
+ */
+public static function toKey(string $input) : string{
     // @todo Add adapter code.
 }
 ```
-
-## Traits
-

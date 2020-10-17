@@ -4,14 +4,23 @@ declare(strict_types=1);
 
 namespace App\LibraryReview;
 
+use Reflection;
 use ReflectionClass;
+use ReflectionClassConstant;
 use ReflectionMethod;
 use ReflectionNamedType;
+use ReflectionParameter;
+use ReflectionProperty;
 use Twig\Environment;
 use Twig\TwigFunction;
 
 class TwigExtensions
 {
+    /**
+     * @var array
+     */
+    private static $context;
+
     /**
      * Add the methods of this class to the Twig environment
      *
@@ -32,223 +41,388 @@ class TwigExtensions
     }
 
     /**
-     * Get the parameter type
+     * Set the context (class, uses)
      *
-     * @param ReflectionMethod $method
-     * @param string           $param
-     * @param array            $uses
-     *
-     * @return string|null
+     * @param array $context
      */
-    public static function getParamType(ReflectionMethod $method, string $param, array $uses): ?string
+    public static function setContext(array $context): void
     {
-        $parameters = $method->getParameters();
-        foreach ($parameters as $parameter) {
-            if ($parameter->getName() === $param) {
-                $type = $parameter->getType();
-
-                if ($type instanceof ReflectionNamedType) {
-                    return self::namespace($type->getName(), $method->getDeclaringClass(), $uses);
-                }
-
-                return self::getParamTypeFromDocblock($method, $param, $uses);
-            }
-        }
-
-        return null;
+        self::$context = $context;
     }
 
     /**
      * Get the return type
      *
-     * @param ReflectionMethod $method
-     * @param array            $uses
+     * @param             $node
+     * @param string|null $mode
      *
      * @return string|null
      */
-    public static function getReturnType(ReflectionMethod $method, array $uses): ?string
+    public static function type($node, ?string $mode = null): ?string
     {
-        if ($method->hasReturnType()) {
-            $type = $method->getReturnType();
+        if ($node instanceof ReflectionParameter) {
+            $type = $node->getType();
 
             if ($type instanceof ReflectionNamedType) {
-                return self::namespace($type->getName(), $method->getDeclaringClass(), $uses);
+                return self::namespace($type->getName(), $node->getDeclaringClass());
             }
+
+            return self::getParamTypeFromDocblock($node, $mode);
         }
 
-        return self::getReturnTypeFromDocblock($method, $uses);
+        if ($node instanceof ReflectionMethod) {
+            if ($node->hasReturnType()) {
+                $type = $node->getReturnType();
+
+                if ($type instanceof ReflectionNamedType) {
+                    return self::namespace($type->getName(), $node->getDeclaringClass());
+                }
+            }
+
+            return self::getReturnTypeFromDocblock($node, $mode);
+        }
+
+        if ($node instanceof ReflectionClassConstant) {
+            $value = $node->getValue();
+
+            return is_object($value) ? get_class($value) : self::cleanType(gettype($value));
+        }
+    }
+
+    public static function description($node, ?string $subset = null)
+    {
+        if ($node instanceof ReflectionParameter) {
+            $method   = $node->getDeclaringFunction();
+            $docblock = self::parseComment($method->getDocComment() ?: null, $method->getDeclaringClass());
+
+            return $docblock['param'][$node->getName()]['description'] ?? '';
+        }
+
+        if ($node instanceof ReflectionProperty) {
+            $docblock = self::parseComment($node->getDocComment() ?: null, $node->getDeclaringClass());
+
+            return $docblock['var']['description'] ?? '';
+        }
+
+        if ($node instanceof ReflectionClassConstant) {
+            $docblock = self::parseComment($node->getDocComment() ?: null, $node->getDeclaringClass());
+
+            return $docblock['var']['description'] ?? $docblock['description'] ?? '';
+        }
+
+        if ($node instanceof ReflectionMethod) {
+            $docblock = self::parseComment($node->getDocComment() ?: null, $node->getDeclaringClass());
+
+            if ($subset === 'return') {
+                return $docblock['return']['description'] ?? null;
+            }
+
+            $description = trim($docblock['description']);
+            $description = preg_replace('~<pre>(.*?)</pre>~', "```php\n$1\n```\n", $description);
+
+            return $description;
+        }
+
+        if ($node instanceof ReflectionClass) {
+            $docblock    = self::parseComment($node->getDocComment() ?: null, $node);
+            $description = trim($docblock['description']);
+            $description = preg_replace('~<pre>(.*?)</pre>~', "```php\n$1\n```\n", $description);
+
+            return $description;
+        }
+
+        return '**** Unknown node type ' . (is_object($node) ? get_class($node) : gettype($node)) . ' ****';
     }
 
     /**
-     * Get the parameter type from the method docblock
-     *
      * @param ReflectionMethod $method
-     * @param string           $param
-     * @param array            $uses
      *
-     * @return string|null
+     * @return array
      */
-    private static function getParamTypeFromDocblock(ReflectionMethod $method, string $param, array $uses): ?string
+    public static function exceptions(ReflectionMethod $method): array
     {
-        preg_match_all(
-            '~@param\s+(\S+)\s+\$(\w+)\b~',
-            self::getDocBlock($method, ''),
-            $matches,
-            PREG_SET_ORDER
-        );
+        $docblock = self::parseComment($method->getDocComment() ?: null, $method->getDeclaringClass());
 
-        foreach ($matches as $match) {
-            if ($match[2] === $param) {
-                return self::namespace($match[1], $method->getDeclaringClass(), $uses);
-            }
-        }
-
-        return null;
+        return $docblock['throws'] ?? [];
     }
 
     /**
-     * Get the parameter description from the method docblock
+     * @param ReflectionClass $class
      *
-     * @param ReflectionMethod $method
-     * @param string           $param
-     *
-     * @return string|null
+     * @return bool
      */
-    public static function getParamDescription(ReflectionMethod $method, string $param): ?string
+    public static function hasConstants(ReflectionClass $class): bool
     {
-        preg_match_all(
-            '~@param\s+(\S+)\s+\$(\w+)\s+(.*?)\n~',
-            self::getDocBlock($method, 'declared in ' . $method->getDeclaringClass()->getName()),
-            $matches,
-            PREG_SET_ORDER
-        );
+        $constants = $class->getReflectionConstants();
 
-        foreach ($matches as $match) {
-            if ($match[2] === $param) {
-                return rtrim($match[3], '.') . '.';
+        foreach ($constants as $constant) {
+            if (!$constant->isPrivate()) {
+                return true;
             }
         }
 
-        return null;
+        return false;
     }
 
-    public static function getDefault(\ReflectionParameter $param)
+    /**
+     * @param ReflectionClass $class
+     *
+     * @return bool
+     */
+    public static function hasProperties(ReflectionClass $class): bool
     {
-        $default = $param->getDefaultValue();
+        $properties = $class->getProperties();
 
-        if (is_array($default)) {
-            return str_replace('[  ]', '[]', '[ ' . implode(', ', $default) . ' ]');
+        foreach ($properties as $property) {
+            if (!$property->isPrivate()) {
+                return true;
+            }
         }
-        if ($default === null) {
+
+        return false;
+    }
+
+    /**
+     * @param ReflectionClass $class
+     *
+     * @return bool
+     */
+    public static function hasMethods(ReflectionClass $class): bool
+    {
+        $methods = $class->getMethods();
+
+        foreach ($methods as $method) {
+            if (!$method->isPrivate()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param  $node
+     *
+     * @return bool
+     */
+    public static function isDeprecated($node): bool
+    {
+        if ($node instanceof ReflectionMethod) {
+            if ($node->isDeprecated()) {
+                return true;
+            }
+
+            $declaringClass = $node->getDeclaringClass();
+        } else {
+            $declaringClass = $node;
+        }
+
+        $docblock = self::parseComment($node->getDocComment() ?: null, $declaringClass);
+
+        return isset($docblock['deprecated']);
+    }
+
+    public static function value($node)
+    {
+        if ($node instanceof ReflectionParameter) {
+            try {
+                // Suppress warning in case the value is an undefined constant
+                $value = @$node->getDefaultValue();
+            } catch (\ReflectionException $e) {
+                $value = null;
+            }
+        } elseif ($node instanceof ReflectionClassConstant) {
+            $value = $node->getValue();
+        } else {
+            $value = $node;
+        }
+
+        if (is_array($value)) {
+            array_walk(
+                $value,
+                function (&$val) {
+                    $val = self::value($val);
+                }
+            );
+
+            return str_replace('[  ]', '[]', '[ ' . implode(', ', $value) . ' ]');
+        }
+
+        if (is_string($value)) {
+            return '\'' . str_replace('\'', '\\\'', $value) . '\'';
+        }
+
+        if ($value === null) {
             return 'null';
         }
-        if ($default === true) {
+        if ($value === true) {
             return 'true';
         }
-        if ($default === false) {
+        if ($value === false) {
             return 'false';
         }
-        if (is_string($default)) {
-            return '\'' . str_replace('\'', '\\\'', $default) . '\'';
+
+        return $value;
+    }
+
+    /**
+     * @param ReflectionMethod $method
+     *
+     * @return string
+     */
+    public static function modifiers(ReflectionMethod $method): string
+    {
+        return implode(' ', Reflection::getModifierNames($method->getModifiers()));
+    }
+
+    /**
+     * Get title, description and annotations from a docblock
+     *
+     * @param string|null     $docComment
+     * @param ReflectionClass $declaringClass
+     *
+     * @return array
+     */
+    public static function parseComment(?string $docComment, ReflectionClass $declaringClass): array
+    {
+        if ($docComment === null) {
+            return [
+                'title'       => '',
+                'description' => '',
+            ];
         }
 
-        return $default;
+        $comment           = self::getDocblockContent($docComment);
+        $result['comment'] = $comment;
+
+        if (!empty($comment) && $comment[0] !== '@') {
+            [$title, $comment] = explode("\n", $comment . "\n", 2);
+        } else {
+            $title = '';
+        }
+        $result['title']       = trim($title);
+        $result['description'] = trim($title) . "\n\n";
+
+        $lines = explode("\n", $comment);
+
+        $collector = &$result['description'];
+
+        foreach ($lines as $line) {
+            $line = trim($line);
+
+            if ($line === '') {
+                $collector .= "\n";
+                continue;
+            }
+
+            if ($line[0] !== '@') {
+                $collector .= $line . "\n";
+                continue;
+            }
+
+            if (!preg_match('~@(\S+)\s+(.*)~', $line, $match)) {
+                // It is a standalone tag without further information, just count
+                $result[$line] = ($result[$line] ?? 0) + 1;
+                continue;
+            }
+
+            switch ($match[1]) {
+                case 'param':
+                case 'property-read':
+                    [$type, $var, $desc] = preg_split('~\s+~', trim($match[2]) . ' ', 3);
+                    $var                     = ltrim($var, '$');
+                    $result[$match[1]][$var] = [
+                        'type'        => self::namespace($type, $declaringClass),
+                        'description' => $desc . "\n",
+                    ];
+
+                    $collector = &$result[$match[1]][$var]['description'];
+                    break;
+
+                case 'return':
+                    [$type, $desc] = preg_split('~\s+~', trim($match[2]) . ' ', 2);
+                    $result[$match[1]] = [
+                        'type'        => self::namespace($type, $declaringClass),
+                        'description' => $desc . "\n",
+                    ];
+
+                    $collector = &$result[$match[1]]['description'];
+                    break;
+
+                case 'throws':
+                    [$type, $desc] = preg_split('~\s+~', trim($match[2]) . ' ', 2);
+                    $result[$match[1]][$match[2]] = [
+                        'type'        => self::namespace($type, $declaringClass),
+                        'description' => $desc . "\n",
+                    ];
+
+                    $collector = &$result[$match[1]][$match[2]]['description'];
+                    break;
+
+                case 'var':
+                    [$type, $desc] = preg_split('~\s+~', trim($match[2]) . ' ', 2);
+                    $result[$match[1]] = [
+                        'type'        => self::namespace($type, $declaringClass),
+                        'description' => ($desc ?: $result['title']) . "\n",
+                    ];
+
+                    $collector = &$result[$match[1]]['description'];
+                    break;
+
+                case 'deprecated':
+                    [$version, $desc] = preg_split('~\s+~', trim($match[2]) . ' ', 2);
+                    $result[$match[1]] = [
+                        'version'     => $version,
+                        'description' => $desc,
+                    ];
+
+                    $collector = &$result[$match[1]]['description'];
+                    break;
+
+                default:
+                    $result[$match[1]] = $match[2] . "\n";
+
+                    $collector = &$result[$match[1]];
+                    break;
+            }
+        }
+
+        return self::trimArray($result);
     }
 
     /**
      * Get the return type from the method docblock
      *
      * @param ReflectionMethod $method
-     * @param array            $uses
+     * @param string|null      $mode
      *
      * @return string|null
      */
-    private static function getReturnTypeFromDocblock(ReflectionMethod $method, array $uses): ?string
+    private static function getReturnTypeFromDocblock(ReflectionMethod $method, ?string $mode): ?string
     {
-        $isDefined = preg_match(
-            '~@return\s+(\S+)\b~',
-            self::getDocBlock($method, ''),
-            $match
-        );
+        $docblock = self::parseComment($method->getDocComment() ?: null, $method->getDeclaringClass());
 
-        if ($isDefined) {
-            return self::namespace($match[1], $method->getDeclaringClass(), $uses);
+        $type = $docblock['return']['type'] ?? 'void';
+
+        if ($mode === 'strict') {
+            return strpos($type, '|') === false ? $type : null;
         }
 
-        return 'void';
-    }
-
-    /**
-     * Get the return value description from the method docblock
-     *
-     * @param ReflectionMethod $method
-     *
-     * @return string|null
-     */
-    public static function getReturnDescription(ReflectionMethod $method): ?string
-    {
-        $isDefined = preg_match(
-            '~@return\s+(\S+)\s+(.*?)\n~',
-            self::getDocBlock($method, 'undefined'),
-            $match
-        );
-
-        if ($isDefined) {
-            if (trim($match[2]) === '*') {
-                return null;
-            }
-
-            return $match[2];
-        }
-
-        return null;
+        return $type;
     }
 
     /**
      * Get the declared exceptions
      *
      * @param ReflectionMethod $method
-     * @param array            $uses
      *
      * @return array
      */
-    public static function getExceptions(ReflectionMethod $method, array $uses): array
+    public static function getExceptions(ReflectionMethod $method): array
     {
-        preg_match_all(
-            '~@throws\s+(\S+)[ \t]*([^\n]*)?\n~',
-            self::getDocBlock($method, ''),
-            $matches,
-            PREG_SET_ORDER
-        );
-        
-        $exceptions = [];
-        foreach ($matches as $match) {
-            $exceptions[] = [
-                'class'       => self::namespace($match[1], $method->getDeclaringClass(), $uses),
-                'description' => $match[2] ?? ''
-            ];
-        }
+        $docblock = self::parseComment($method->getDocComment() ?: null, $method->getDeclaringClass());
 
-        return $exceptions;
-    }
-
-    /**
-     * Get the class or method description from the docblock
-     *
-     * @param ReflectionClass|ReflectionMethod $method
-     *
-     * @return string|null
-     */
-    public static function getDescriptionFromDocblock($method): ?string
-    {
-        $docblock    = self::getDocBlock($method, '');
-        $description = preg_replace('~^/\*\*\s*\n(.*?)(?:@.*)$~sm', '$1', $docblock);
-        $description = preg_replace('~(?:^|\n)\s+\*(\s|\n)~', "$1\n", $description);
-        $description = preg_replace('~\n\s+\*\s~', "\n\n", $description);
-        $description = preg_replace('~<pre>(.*?)</pre>~', "```php\n$1\n```\n", $description);
-        #$description = preg_replace('~(Example.*?:)(.*+)$~sm', "$1\n```php$2\n```\n", $description);
-
-        return trim($description, " \t\n\r\0\x0B*");
+        return $docblock['throws'] ?? [];
     }
 
     /**
@@ -266,9 +440,9 @@ class TwigExtensions
         }
 
         $docblock = preg_replace_callback(
-            '~Method\s+to\s+(\w)~',
+            '~(Magic function|Method)\s+to\s+(\w)~',
             static function ($match) {
-                return strtoupper($match[1]);
+                return strtoupper($match[2]);
             },
             $docblock
         );
@@ -288,27 +462,31 @@ class TwigExtensions
         return $samples[$class . '::' . $method] ?? [];
     }
 
+    public static function dump($var)
+    {
+        return print_r($var, true);
+    }
+
     /**
      * @param string          $type
      * @param ReflectionClass $declaringClass
-     * @param array           $uses
+     *
+     * @param string|null     $mode
      *
      * @return string
      */
-    private static function namespace(string $type, ReflectionClass $declaringClass, array $uses): string
+    private static function namespace(string $type, ReflectionClass $declaringClass, ?string $mode = null): string
     {
-        static $clean = [
-            'boolean' => 'bool',
-            'integer' => 'int',
-        ];
-
         if (strpos($type, '|') !== false) {
-            // $type is multi-type
+            if ($mode === 'strict') {
+                return '';
+            }
+
             return implode(
                 '|',
                 array_map(
-                    function ($item) use ($declaringClass, $uses) {
-                        return self::namespace($item, $declaringClass, $uses);
+                    function ($item) use ($declaringClass) {
+                        return self::namespace($item, $declaringClass);
                     },
                     explode('|', $type)
                 )
@@ -320,9 +498,9 @@ class TwigExtensions
             return ltrim($type, '\\');
         }
 
-        if (isset($uses[$type])) {
+        if (isset(self::$context['uses'][$type])) {
             // $type was declared in a use statement
-            return $uses[$type];
+            return self::$context['uses'][$type];
         }
 
         if (class_exists($type, false)) {
@@ -336,6 +514,75 @@ class TwigExtensions
         }
 
         // Seems to be a simple type
+        return self::cleanType($type);
+    }
+
+    /**
+     * @param string $docblock
+     *
+     * @return string
+     */
+    private static function getDocblockContent(string $docblock): string
+    {
+        $docblock = preg_replace_callback(
+            '~(Magic function|Method)\s+to\s+(\w)~',
+            static function ($match) {
+                return strtoupper($match[2]);
+            },
+            $docblock
+        );
+
+        return trim(preg_replace('~(/\*\*|\n\s+\* ?|/$)~', "\n", $docblock));
+    }
+
+    private static function trimArray($array): array
+    {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $array[$key] = self::trimArray($value);
+                continue;
+            }
+
+            $array[$key] = is_string($value) ? trim($value) : $value;
+        }
+
+        return $array;
+    }
+
+    /**
+     * Get the parameter type from the method docblock
+     *
+     * @param ReflectionParameter $parameter
+     * @param string|null         $mode
+     *
+     * @return string|null
+     */
+    private static function getParamTypeFromDocblock(ReflectionParameter $parameter, ?string $mode = null): ?string
+    {
+        $method   = $parameter->getDeclaringFunction();
+        $docblock = self::parseComment($method->getDocComment() ?: null, $method->getDeclaringClass());
+
+        $type = $docblock['param'][$parameter->getName()]['type'] ?? null;
+
+        if ($type !== null && $mode === 'strict') {
+            return strpos($type, '|') === false ? $type : null;
+        }
+
+        return $type;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return string|string[]
+     */
+    private static function cleanType(string $type)
+    {
+        static $clean = [
+            'boolean' => 'bool',
+            'integer' => 'int',
+        ];
+
         return str_replace(array_keys($clean), array_values($clean), $type);
     }
 }

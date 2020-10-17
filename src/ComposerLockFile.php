@@ -55,7 +55,7 @@ class ComposerLockFile
         );
 
         $packages = $this->addListOfSourceFiles($packages);
-        $packages = $this->addReflectionClasses($packages);
+        $packages = $this->addReflectionClasses($packages, $packageName);
 
         return $packages;
     }
@@ -70,6 +70,11 @@ class ComposerLockFile
         foreach ($packages as $name => $package) {
             $packages[$name]['files'] = [];
             $basepath                 = $this->vendorDir . '/' . $name;
+
+            if (isset($package['target-dir'])) {
+                $basepath .= '/' . $package['target-dir'];
+            }
+
             foreach ($package['autoload'] as $autoLoadMethod => $sourcePaths) {
                 switch ($autoLoadMethod) {
                     case 'classmap':
@@ -85,6 +90,7 @@ class ComposerLockFile
                         );
                         break;
 
+                    case 'psr-0':
                     case 'psr-4':
                         $packages[$name]['files'] = array_reduce(
                             $sourcePaths,
@@ -117,18 +123,26 @@ class ComposerLockFile
     }
 
     /**
-     * @param array $packages
+     * @param array  $packages
+     * @param string $packageName
      *
      * @return array
      */
-    private function addReflectionClasses(array $packages): array
+    private function addReflectionClasses(array $packages, string $packageName): array
     {
         foreach ($packages as $name => $package) {
             $classes = [];
             foreach ($package['files'] as $file) {
                 $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
                 try {
-                    $ast = $parser->parse(file_get_contents($file));
+                    $content = file_get_contents($file);
+
+                    if ($content === false) {
+                        echo "Unable to read file $file\n";
+                        continue;
+                    }
+
+                    $ast = $parser->parse($content);
                 } catch (\Error $error) {
                     echo "Parse error: {$error->getMessage()} in $file\n";
 
@@ -141,7 +155,7 @@ class ComposerLockFile
                     continue;
                 }
 
-                $classes = $this->extractClasses($branch, $classes);
+                $classes = $this->extractClasses($branch, $classes, $packageName);
             }
 
             if (empty($classes)) {
@@ -157,14 +171,20 @@ class ComposerLockFile
     /**
      * @param Namespace_ $branch
      * @param array      $classes
+     * @param string     $packageName
      *
      * @return array
      */
-    private function extractClasses(Namespace_ $branch, array $classes): array
+    private function extractClasses(Namespace_ $branch, array $classes, string $packageName): array
     {
         $namespace = (string)$branch->name;
-        $uses      = [];
-        $classes   = array_reduce(
+
+        if (stripos($namespace, str_replace('/', '\\', $packageName)) !== 0) {
+            return [];
+        }
+
+        $uses    = [];
+        $classes = array_reduce(
             $branch->stmts,
             /**
              * @param        $carry
@@ -182,6 +202,10 @@ class ComposerLockFile
                 }
 
                 if ($item instanceof If_) {
+                    return $carry;
+                }
+
+                if (!$item instanceof Stmt\ClassLike) {
                     return $carry;
                 }
 

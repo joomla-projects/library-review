@@ -2,15 +2,11 @@
 
 Joomla Utilities Package
 
-## Interfaces
-
-
-## Classes
-
-### The Joomla\Utilities\ArrayHelper Class
+## The Joomla\Utilities\ArrayHelper Class
 
 ArrayHelper is an array utility class for doing all sorts of odds and ends with arrays.
 
+### Methods
 
 #### `Joomla\Utilities\ArrayHelper::toInteger`
 
@@ -19,14 +15,14 @@ Function to convert array to integer values
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::toInteger ( array $array [, int|array $default ] ) : array
+public static Joomla\Utilities\ArrayHelper::toInteger ( array $array [, int|array $default = null ] ) : array
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `array` | `array` | The source array to convert. |
-| `default` | `int` or `array` | A default value to assign if $array is not an array. Defaults to `null`. |
+| `array` | `array` | The source array to convert |
+| `default` | `int` or `array` | A default value to assign if $array is not an array Defaults to `null`. |
 
 ##### Return Values
 
@@ -53,9 +49,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  array
  *
  * @since   1.0
- */ 
-public static toInteger(array $array, int|array $default = null) : array
-{
+ */
+public static function toInteger(array $array,  $default = null) : array{
     // @todo Add adapter code.
 }
 ```
@@ -66,15 +61,15 @@ Utility function to map an array to a stdClass object.
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::toObject ( array $array [, string $class [, bool $recursive ]] ) : object
+public static Joomla\Utilities\ArrayHelper::toObject ( array $array [, string $class = &#039;stdClass&#039; [, bool $recursive = true ]] ) : object
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
 | `array` | `array` | The array to map. |
-| `class` | `string` | Name of the class to create. Defaults to `'stdClass'`. |
-| `recursive` | `bool` | Convert also any array inside the main array. Defaults to `true`. |
+| `class` | `string` | Name of the class to create Defaults to `'stdClass'`. |
+| `recursive` | `bool` | Convert also any array inside the main array Defaults to `true`. |
 
 ##### Return Values
 
@@ -102,9 +97,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  object
  *
  * @since   1.0
- */ 
-public static toObject(array $array, string $class = 'stdClass', bool $recursive = true) : object
-{
+ */
+public static function toObject(array $array, string $class = 'stdClass', bool $recursive = true) : object{
     // @todo Add adapter code.
 }
 ```
@@ -115,7 +109,7 @@ Utility function to map an array to a string.
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::toString ( array $array [, string $innerGlue [, string $outerGlue [, bool $keepOuterKey ]]] ) : string
+public static Joomla\Utilities\ArrayHelper::toString ( array $array [, string $innerGlue = &#039;=&#039; [, string $outerGlue = &#039; &#039; [, bool $keepOuterKey = false ]]] ) : string
 ```
 ##### Parameters
 
@@ -153,9 +147,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string
  *
  * @since   1.0
- */ 
-public static toString(array $array, string $innerGlue = '=', string $outerGlue = ' ', bool $keepOuterKey = false) : string
-{
+ */
+public static function toString(array $array, string $innerGlue = '=', string $outerGlue = ' ', bool $keepOuterKey = false) : string{
     // @todo Add adapter code.
 }
 ```
@@ -166,15 +159,15 @@ Utility function to map an object to an array
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::fromObject ( object $source [, bool $recurse [, string $regex ]] ) : array
+public static Joomla\Utilities\ArrayHelper::fromObject ( object $source [, bool $recurse = true [, string $regex = null ]] ) : array
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `source` | `object` | The source object. |
-| `recurse` | `bool` | True to recurse through multi-level objects. Defaults to `true`. |
-| `regex` | `string` | An optional regular expression to match on field names. Defaults to `null`. |
+| `source` | `object` | The source object |
+| `recurse` | `bool` | True to recurse through multi-level objects Defaults to `true`. |
+| `regex` | `string` | An optional regular expression to match on field names Defaults to `null`. |
 
 ##### Return Values
 
@@ -202,13 +195,11 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  array
  *
  * @since   1.0
- */ 
-public static fromObject(object $source, bool $recurse = true, string $regex = null) : array
-{
+ */
+public static function fromObject(object $source, bool $recurse = true, string $regex = null) : array{
     // @todo Add adapter code.
 }
 ```
-
 #### `Joomla\Utilities\ArrayHelper::addColumn`
 
 Adds a column to an array of arrays or objects
@@ -216,16 +207,16 @@ Adds a column to an array of arrays or objects
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::addColumn ( array $array, array $column, string $colName [, string $keyCol ] ) : array
+public static Joomla\Utilities\ArrayHelper::addColumn ( array $array, array $column, string $colName [, string $keyCol = null ] ) : array
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `array` | `array` | The source array. |
-| `column` | `array` | The array to be used as new column. |
-| `colName` | `string` | The index of the new column or name of the new object property. |
-| `keyCol` | `string` | The index of the column or name of object property to be used for mapping with the new column. Defaults to `null`. |
+| `array` | `array` | The source array |
+| `column` | `array` | The array to be used as new column |
+| `colName` | `string` | The index of the new column or name of the new object property |
+| `keyCol` | `string` | The index of the column or name of object property to be used for mapping with the new column Defaults to `null`. |
 
 ##### Return Values
 
@@ -255,9 +246,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @since   1.5.0
  * @see     https://www.php.net/manual/en/language.types.array.php
- */ 
-public static addColumn(array $array, array $column, string $colName, string $keyCol = null) : array
-{
+ */
+public static function addColumn(array $array, array $column, string $colName, string $keyCol = null) : array{
     // @todo Add adapter code.
 }
 ```
@@ -274,8 +264,8 @@ public static Joomla\Utilities\ArrayHelper::dropColumn ( array $array, string $c
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `array` | `array` | The source array. |
-| `colName` | `string` | The index of the column or name of object property to be removed. |
+| `array` | `array` | The source array |
+| `colName` | `string` | The index of the column or name of object property to be removed |
 
 ##### Return Values
 
@@ -303,9 +293,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @since   1.5.0
  * @see     https://www.php.net/manual/en/language.types.array.php
- */ 
-public static dropColumn(array $array, string $colName) : array
-{
+ */
+public static function dropColumn(array $array, string $colName) : array{
     // @todo Add adapter code.
 }
 ```
@@ -316,15 +305,15 @@ Extracts a column from an array of arrays or objects
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::getColumn ( array $array, string $valueCol [, string $keyCol ] ) : array
+public static Joomla\Utilities\ArrayHelper::getColumn ( array $array, string $valueCol [, string $keyCol = null ] ) : array
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `array` | `array` | The source array. |
-| `valueCol` | `string` | The index of the column or name of object property to be used as value. |
-| `keyCol` | `string` | The index of the column or name of object property to be used as key. Defaults to `null`. |
+| `array` | `array` | The source array |
+| `valueCol` | `string` | The index of the column or name of object property to be used as value  It may also be NULL to return complete arrays or objects (this is useful together with <var>$keyCol</var> to reindex the array). |
+| `keyCol` | `string` | The index of the column or name of object property to be used as key Defaults to `null`. |
 
 ##### Return Values
 
@@ -356,9 +345,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @since   1.0
  * @see     https://www.php.net/manual/en/language.types.array.php
  * @see     https://www.php.net/manual/en/function.array-column.php
- */ 
-public static getColumn(array $array, string $valueCol, string $keyCol = null) : array
-{
+ */
+public static function getColumn(array $array, string $valueCol, string $keyCol = null) : array{
     // @todo Add adapter code.
 }
 ```
@@ -369,16 +357,16 @@ Utility function to return a value from a named array or a specified default
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::getValue ( array|ArrayAccess $array, string $name [, mixed $default [, string $type ]] ) : mixed
+public static Joomla\Utilities\ArrayHelper::getValue ( array|ArrayAccess $array, string $name [, mixed $default = null [, string $type = &#039;&#039; ]] ) : mixed
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `array` | `array` or `ArrayAccess` | A named array or object that implements ArrayAccess. |
-| `name` | `string` | The key to search for (this can be an array index or a dot separated key sequence as in Registry). |
-| `default` | `mixed` | The default value to give if no key found. Defaults to `null`. |
-| `type` | `string` | Return type for the variable (INT, FLOAT, STRING, WORD, BOOLEAN, ARRAY). Defaults to `''`. |
+| `array` | `array` or `ArrayAccess` | A named array or object that implements ArrayAccess |
+| `name` | `string` | The key to search for (this can be an array index or a dot separated key sequence as in Registry) |
+| `default` | `mixed` | The default value to give if no key found Defaults to `null`. |
+| `type` | `string` | Return type for the variable (INT, FLOAT, STRING, WORD, BOOLEAN, ARRAY) Defaults to `''`. |
 
 ##### Return Values
 
@@ -408,9 +396,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @since   1.0
  * @throws  \InvalidArgumentException
- */ 
-public static getValue(array|ArrayAccess $array, string $name, mixed $default = null, string $type = '') : mixed
-{
+ */
+public static function getValue( $array, string $name, mixed $default = null, string $type = '') : mixed{
     // @todo Add adapter code.
 }
 ```
@@ -418,22 +405,22 @@ public static getValue(array|ArrayAccess $array, string $name, mixed $default = 
 
 Takes an associative array of arrays and inverts the array keys to values using the array values as keys.
 
-Example: 
-$input = array( 
-    'New' => array('1000', '1500', '1750'), 
-    'Used' => array('3000', '4000', '5000', '6000') 
-); 
+Example:
+$input = array(
+'New' => array('1000', '1500', '1750'),
+'Used' => array('3000', '4000', '5000', '6000')
+);
 $output = ArrayHelper::invert($input);
 
-Output would be equal to: 
-$output = array( 
-    '1000' => 'New', 
-    '1500' => 'New', 
-    '1750' => 'New', 
-    '3000' => 'Used', 
-    '4000' => 'Used', 
-    '5000' => 'Used', 
-    '6000' => 'Used' 
+Output would be equal to:
+$output = array(
+'1000' => 'New',
+'1500' => 'New',
+'1750' => 'New',
+'3000' => 'Used',
+'4000' => 'Used',
+'5000' => 'Used',
+'6000' => 'Used'
 );
 
 ##### Signature
@@ -489,9 +476,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  array
  *
  * @since   1.0
- */ 
-public static invert(array $array) : array
-{
+ */
+public static function invert(array $array) : array{
     // @todo Add adapter code.
 }
 ```
@@ -534,9 +520,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean
  *
  * @since   1.0
- */ 
-public static isAssociative(array $array) : bool
-{
+ */
+public static function isAssociative(array $array) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -547,7 +532,7 @@ Pivots an array to create a reverse lookup of an array of scalars, arrays or obj
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::pivot ( array $source [, string $key ] ) : array
+public static Joomla\Utilities\ArrayHelper::pivot ( array $source [, string $key = null ] ) : array
 ```
 ##### Parameters
 
@@ -581,9 +566,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  array  An array of arrays pivoted either on the value of the keys, or an individual key of an object or array.
  *
  * @since   1.0
- */ 
-public static pivot(array $source, string $key = null) : array
-{
+ */
+public static function pivot(array $source, string $key = null) : array{
     // @todo Add adapter code.
 }
 ```
@@ -594,17 +578,17 @@ Utility function to sort an array of objects on a given field
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::sortObjects ( array $a, mixed $k [, mixed $direction [, mixed $caseSensitive [, mixed $locale ]]] ) : array
+public static Joomla\Utilities\ArrayHelper::sortObjects ( array $a, mixed $k [, mixed $direction = 1 [, mixed $caseSensitive = true [, mixed $locale = false ]]] ) : array
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `a` | `array` | An array of objects. |
-| `k` | `mixed` | The key (string) or an array of keys to sort on. |
-| `direction` | `mixed` | Direction (integer) or an array of direction to sort in [1 = Ascending] [-1 = Descending]. Defaults to `1`. |
-| `caseSensitive` | `mixed` | Boolean or array of booleans to let sort occur case sensitive or insensitive. Defaults to `true`. |
-| `locale` | `mixed` | Boolean or array of booleans to let sort occur using the locale language or not. Defaults to `false`. |
+| `a` | `array` | An array of objects |
+| `k` | `mixed` | The key (string) or an array of keys to sort on |
+| `direction` | `mixed` | Direction (integer) or an array of direction to sort in [1 = Ascending] [-1 = Descending] Defaults to `1`. |
+| `caseSensitive` | `mixed` | Boolean or array of booleans to let sort occur case sensitive or insensitive Defaults to `true`. |
+| `locale` | `mixed` | Boolean or array of booleans to let sort occur using the locale language or not Defaults to `false`. |
 
 ##### Return Values
 
@@ -634,9 +618,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  array
  *
  * @since   1.0
- */ 
-public static sortObjects(array $a, mixed $k, mixed $direction = 1, mixed $caseSensitive = true, mixed $locale = false) : array
-{
+ */
+public static function sortObjects(array $a, mixed $k, mixed $direction = 1, mixed $caseSensitive = true, mixed $locale = false) : array{
     // @todo Add adapter code.
 }
 ```
@@ -680,9 +663,8 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @see     https://www.php.net/manual/en/function.array-unique.php
  * @since   1.0
- */ 
-public static arrayUnique(array $array) : array
-{
+ */
+public static function arrayUnique(array $array) : array{
     // @todo Add adapter code.
 }
 ```
@@ -693,7 +675,7 @@ An improved array_search that allows for partial matching of strings values in a
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::arraySearch ( string $needle, array $haystack [, bool $caseSensitive ] ) : mixed
+public static Joomla\Utilities\ArrayHelper::arraySearch ( string $needle, array $haystack [, bool $caseSensitive = true ] ) : mixed
 ```
 ##### Parameters
 
@@ -729,9 +711,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  mixed    Returns the matching array $key if found, otherwise false.
  *
  * @since   1.0
- */ 
-public static arraySearch(string $needle, array $haystack, bool $caseSensitive = true) : mixed
-{
+ */
+public static function arraySearch(string $needle, array $haystack, bool $caseSensitive = true) : mixed{
     // @todo Add adapter code.
 }
 ```
@@ -742,7 +723,7 @@ Recursively convert data to a one dimension array.
 ##### Signature
 
 ```php
-public static Joomla\Utilities\ArrayHelper::flatten ( array|object $array [, string $separator [, string $prefix ]] ) : array
+public static Joomla\Utilities\ArrayHelper::flatten ( array|object $array [, string $separator = &#039;.&#039; [, string $prefix = &#039;&#039; ]] ) : array
 ```
 ##### Parameters
 
@@ -779,19 +760,20 @@ but leverages the corresponding Laravel package behind the scene.
  *
  * @since   1.3.0
  * @note    As of 2.0, the result will not include the original array structure
- */ 
-public static flatten(array|object $array, string $separator = '.', string $prefix = '') : array
-{
+ */
+public static function flatten( $array, string $separator = '.', string $prefix = '') : array{
     // @todo Add adapter code.
 }
 ```
-### The Joomla\Utilities\IpHelper Class
+
+## The Joomla\Utilities\IpHelper Class
 
 IpHelper is a utility class for processing IP addresses
 
-This class is adapted from the `FOFUtilsIp` class distributed with the Joomla! CMS as part of the FOF library by Akeeba Ltd. 
+This class is adapted from the `FOFUtilsIp` class distributed with the Joomla! CMS as part of the FOF library by Akeeba Ltd.
 The original class is copyright of Nicholas K. Dionysopoulos / Akeeba Ltd.
 
+### Methods
 
 #### `Joomla\Utilities\IpHelper::getIp`
 
@@ -828,9 +810,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string
  *
  * @since   1.6.0
- */ 
-public static getIp() : string
-{
+ */
+public static function getIp() : string{
     // @todo Add adapter code.
 }
 ```
@@ -847,7 +828,7 @@ public static Joomla\Utilities\IpHelper::setIp ( string $ip  ) : void
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `ip` | `string` | The visitor's IP address. |
+| `ip` | `string` | The visitor's IP address |
 
 ##### Return Values
 
@@ -873,9 +854,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  void
  *
  * @since   1.6.0
- */ 
-public static setIp(string $ip) : void
-{
+ */
+public static function setIp(string $ip) : void{
     // @todo Add adapter code.
 }
 ```
@@ -892,7 +872,7 @@ public static Joomla\Utilities\IpHelper::isIPv6 ( string $ip  ) : bool
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `ip` | `string` | An IPv4 or IPv6 address. |
+| `ip` | `string` | An IPv4 or IPv6 address |
 
 ##### Return Values
 
@@ -918,9 +898,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean
  *
  * @since   1.6.0
- */ 
-public static isIPv6(string $ip) : bool
-{
+ */
+public static function isIPv6(string $ip) : bool{
     // @todo Add adapter code.
 }
 ```
@@ -931,14 +910,14 @@ Checks if an IP is contained in a list of IPs or IP expressions
 ##### Signature
 
 ```php
-public static Joomla\Utilities\IpHelper::IPinList ( string $ip [, array|string $ipTable ] ) : bool
+public static Joomla\Utilities\IpHelper::IPinList ( string $ip [, array|string $ipTable = &#039;&#039; ] ) : bool
 ```
 ##### Parameters
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `ip` | `string` | The IPv4/IPv6 address to check. |
-| `ipTable` | `array` or `string` | An IP expression (or a comma-separated or array list of IP expressions) to check against. Defaults to `''`. |
+| `ip` | `string` | The IPv4/IPv6 address to check |
+| `ipTable` | `array` or `string` | An IP expression (or a comma-separated or array list of IP expressions) to check against Defaults to `''`. |
 
 ##### Return Values
 
@@ -965,9 +944,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean
  *
  * @since   1.6.0
- */ 
-public static IPinList(string $ip, array|string $ipTable = '') : bool
-{
+ */
+public static function IPinList(string $ip,  $ipTable = '') : bool{
     // @todo Add adapter code.
 }
 ```
@@ -1006,9 +984,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  void
  *
  * @since   1.6.0
- */ 
-public static workaroundIPIssues() : void
-{
+ */
+public static function workaroundIPIssues() : void{
     // @todo Add adapter code.
 }
 ```
@@ -1025,7 +1002,7 @@ public static Joomla\Utilities\IpHelper::setAllowIpOverrides ( bool $newState  )
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `newState` | `bool` | True to allow the override. |
+| `newState` | `bool` | True to allow the override |
 
 ##### Return Values
 
@@ -1051,9 +1028,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  void
  *
  * @since   1.6.0
- */ 
-public static setAllowIpOverrides(bool $newState) : void
-{
+ */
+public static function setAllowIpOverrides(bool $newState) : void{
     // @todo Add adapter code.
 }
 ```
@@ -1063,7 +1039,7 @@ Gets the visitor's IP address.
 
 Automatically handles reverse proxies reporting the IPs of intermediate devices, like load balancers. Examples:
 
-- https://www.akeebabackup.com/support/admin-tools/13743-double-ip-adresses-in-security-exception-log-warnings.html 
+- https://www.akeebabackup.com/support/admin-tools/13743-double-ip-adresses-in-security-exception-log-warnings.html
 - https://stackoverflow.com/questions/2422395/why-is-request-envremote-addr-returning-two-ips
 
 The solution used is assuming that the last IP address is the external one.
@@ -1106,9 +1082,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string
  *
  * @since   1.6.0
- */ 
-protected static detectAndCleanIP() : string
-{
+ */
+protected static function detectAndCleanIP() : string{
     // @todo Add adapter code.
 }
 ```
@@ -1147,9 +1122,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string
  *
  * @since   1.6.0
- */ 
-protected static detectIP() : string
-{
+ */
+protected static function detectIP() : string{
     // @todo Add adapter code.
 }
 ```
@@ -1166,7 +1140,7 @@ protected static Joomla\Utilities\IpHelper::inetToBits ( string $inet  ) : strin
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `inet` | `string` | The in_addr representation of an IPv4 or IPv6 address. |
+| `inet` | `string` | The in_addr representation of an IPv4 or IPv6 address |
 
 ##### Return Values
 
@@ -1192,9 +1166,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  string
  *
  * @since   1.6.0
- */ 
-protected static inetToBits(string $inet) : string
-{
+ */
+protected static function inetToBits(string $inet) : string{
     // @todo Add adapter code.
 }
 ```
@@ -1211,8 +1184,8 @@ protected static Joomla\Utilities\IpHelper::checkIPv6CIDR ( string $ip, string $
 
 | Parameter | Type | Description |
 |----------|------|-------------|
-| `ip` | `string` | The IPv6 address to check, e.g. 21DA:00D3:0000:2F3B:02AC:00FF:FE28:9C5A. |
-| `cidrnet` | `string` | The IPv6 CIDR block, e.g. 21DA:00D3:0000:2F3B::/64. |
+| `ip` | `string` | The IPv6 address to check, e.g. 21DA:00D3:0000:2F3B:02AC:00FF:FE28:9C5A |
+| `cidrnet` | `string` | The IPv6 CIDR block, e.g. 21DA:00D3:0000:2F3B::/64 |
 
 ##### Return Values
 
@@ -1239,12 +1212,8 @@ but leverages the corresponding Laravel package behind the scene.
  * @return  boolean
  *
  * @since   1.6.0
- */ 
-protected static checkIPv6CIDR(string $ip, string $cidrnet) : bool
-{
+ */
+protected static function checkIPv6CIDR(string $ip, string $cidrnet) : bool{
     // @todo Add adapter code.
 }
 ```
-
-## Traits
-
