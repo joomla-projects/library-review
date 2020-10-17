@@ -106,6 +106,7 @@ Factory class to fetch Registry objects
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$formatInstances` | `Joomla\Registry\FormatInterface[]` | Format instances container - for backward compatibility with AbstractRegistryFormat::getInstance(). |    
+
 ### Methods
 
 #### `Joomla\Registry\Factory::getFormat`
@@ -168,6 +169,7 @@ Registry class
 | protected `$initialized` | `bool` | Flag if the Registry data object has been initialized |
 | protected static `$instances` | `Joomla\Registry\Registry[]` | Registry instances container. |
 | public `$separator` | `string` | Path separator |    
+
 ### Methods
 
 #### `Joomla\Registry\Registry::__construct`
@@ -1501,6 +1503,7 @@ PHP class format handler for Registry
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$instances` | `Joomla\Registry\Format\AbstractRegistryFormat[]` | Format instances container. |    
+
 ### Methods
 
 #### `Joomla\Registry\Format\Php::objectToString`
@@ -1662,6 +1665,7 @@ XML format handler for Registry.
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$instances` | `Joomla\Registry\Format\AbstractRegistryFormat[]` | Format instances container. |    
+
 ### Methods
 
 #### `Joomla\Registry\Format\Xml::objectToString`
@@ -1873,6 +1877,7 @@ JSON format handler for Registry.
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$instances` | `Joomla\Registry\Format\AbstractRegistryFormat[]` | Format instances container. |    
+
 ### Methods
 
 #### `Joomla\Registry\Format\Json::objectToString`
@@ -1992,6 +1997,7 @@ YAML format handler for Registry.
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$instances` | `Joomla\Registry\Format\AbstractRegistryFormat[]` | Format instances container. |    
+
 ### Methods
 
 #### `Joomla\Registry\Format\Yaml::__construct`
@@ -2152,6 +2158,7 @@ INI format handler for Registry.
 | protected static `$options` | `array` | Default options array |
 | protected static `$cache` | `array` | A cache used by stringToObject. |
 | protected static `$instances` | `Joomla\Registry\Format\AbstractRegistryFormat[]` | Format instances container. |    
+
 ### Methods
 
 #### `Joomla\Registry\Format\Ini::objectToString`

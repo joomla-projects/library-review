@@ -179,6 +179,12 @@ class TwigExtensions
             }
         }
 
+        $docblock = self::parseComment($class->getDocComment() ?: null, $class);
+
+        if (isset($docblock['property-read'])) {
+            return true;
+        }
+
         return false;
     }
 
@@ -266,13 +272,35 @@ class TwigExtensions
     }
 
     /**
-     * @param ReflectionMethod $method
+     * @param $node
      *
      * @return string
      */
-    public static function modifiers(ReflectionMethod $method): string
+    public static function modifiers($node): string
     {
-        return implode(' ', Reflection::getModifierNames($method->getModifiers()));
+        $modifiers = implode(' ', Reflection::getModifierNames($node->getModifiers()));
+
+        if ($node instanceof ReflectionProperty) {
+            $class    = $node->getDeclaringClass();
+            $docblock = self::parseComment($class->getDocComment() ?: null, $class);
+
+            if (isset($docblock['propertyread'][$node->getName()])) {
+                $modifiers = str_replace(['public', 'protected', 'private'], 'read-only', $modifiers);
+            }
+        }
+
+        return $modifiers;
+    }
+
+    /**
+     * @param ReflectionProperty $property
+     *
+     * @return bool
+     */
+    public static function isAccessible(ReflectionProperty $property): bool
+    {
+        $modifiers = self::modifiers($property);
+        return strpos($modifiers, 'private') === false;
     }
 
     /**
@@ -326,12 +354,15 @@ class TwigExtensions
                 continue;
             }
 
+            $match[1] = str_replace('-', '', $match[1]);
+
             switch ($match[1]) {
                 case 'param':
-                case 'property-read':
+                case 'propertyread':
                     [$type, $var, $desc] = preg_split('~\s+~', trim($match[2]) . ' ', 3);
                     $var                     = ltrim($var, '$');
                     $result[$match[1]][$var] = [
+                        'name'        => $var,
                         'type'        => self::namespace($type, $declaringClass),
                         'description' => $desc . "\n",
                     ];

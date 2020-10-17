@@ -151,6 +151,7 @@ Exception representing an invalid or undefined HTTP response code
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Http\Exception\InvalidResponseCodeException::__construct`
@@ -510,6 +511,7 @@ Exception representing an unexpected response
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Http\Exception\UnexpectedResponseException::__construct`
@@ -916,6 +918,7 @@ HTTP transport class for using cURL.
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | The client options. |    
+
 ### Methods
 
 #### `Joomla\Http\Transport\Curl::__construct`
@@ -1161,6 +1164,7 @@ HTTP transport class for using PHP streams.
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | The client options. |    
+
 ### Methods
 
 #### `Joomla\Http\Transport\Stream::__construct`
@@ -1359,6 +1363,7 @@ HTTP transport class for using sockets directly.
 |----------|------|-------------|
 | protected `$connections` | `array` | Reusable socket connections. |
 | protected `$options` | `array` or `ArrayAccess` | The client options. |    
+
 ### Methods
 
 #### `Joomla\Http\Transport\Socket::__construct`
@@ -1747,8 +1752,8 @@ HTTP response data object class.
 |----------|------|-------------|
 | public `$code` | `int` | The server response code. |
 | public `$headers` | `array` | Response headers. |
-| public `$body` | `string` | Server response body. |    
-    
+| public `$body` | `string` | Server response body. |
+
 ## The Joomla\Http\Http Class
 
 HTTP client class.
@@ -1759,6 +1764,7 @@ HTTP client class.
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | Options for the HTTP client. |
 | protected `$transport` | `Joomla\Http\TransportInterface` | The HTTP transport object to use in sending HTTP requests. |    
+
 ### Methods
 
 #### `Joomla\Http\Http::__construct`

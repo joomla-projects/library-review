@@ -16,6 +16,7 @@ Keychain Class
 | protected `$initialized` | `bool` | Flag if the Registry data object has been initialized |
 | protected static `$instances` | `Joomla\Keychain\Registry[]` | Registry instances container. |
 | public `$separator` | `string` | Path separator |    
+
 ### Methods
 
 #### `Joomla\Keychain\Keychain::createPassphraseFile`

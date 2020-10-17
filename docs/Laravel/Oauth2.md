@@ -14,6 +14,7 @@ Joomla Framework class for interacting with an OAuth 2.0 server.
 | protected `$http` | `Joomla\Http\Http` | The HTTP client object to use in sending HTTP requests. |
 | protected `$input` | `Joomla\Input\Input` | The input object to use in retrieving GET/POST data. |
 | protected `$application` | `Joomla\Application\AbstractWebApplication` | The application object to send HTTP headers for redirects. |    
+
 ### Methods
 
 #### `Joomla\OAuth2\Client::__construct`

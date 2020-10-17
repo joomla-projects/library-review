@@ -128,6 +128,7 @@ Trait representing a model holding a database reference
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$db` | `Joomla\Database\DatabaseDriver` | The database driver. |    
+
 ### Methods
 
 #### `Joomla\Model\DatabaseModelTrait::getDb`
@@ -225,6 +226,7 @@ Trait representing a model holding a state
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$state` | `Joomla\Registry\Registry` | The model state. |    
+
 ### Methods
 
 #### `Joomla\Model\StatefulModelTrait::getState`

@@ -34,16 +34,14 @@ Does not need to be replaced.
 {% apply spaceless %}
 {% for property in class.class.getProperties %}
 {% set propertyComment = parseComment(property.getDocComment, class.class) %}
-{% if not property.isPrivate %}
-| {% if property.isPublic %}public {% endif %}
-{% if property.isProtected %}protected {% endif %}
-{% if property.isStatic %}static {% endif %}
-`${{ property.name }}` | `{{ propertyComment.var.type | replace({'|': '` or `'}) }}` | {{ description(property) }} |
+{% if isAccessible(property) %}
+| {{ modifiers(property) }} `${{ property.name }}` | `{{ propertyComment.var.type | replace({'|': '` or `'}) }}` | {{ description(property) | raw }} |
 {% endif %}
 {% endfor %}
 {% endapply %}
     
 {% endif %}
+
 {% if hasMethods(class.class) %}
 ### Methods
 

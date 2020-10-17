@@ -15,6 +15,7 @@ Joomla! Input Cookie Class
 | protected `$data` | `array` | Input data. |
 | protected `$inputs` | `Joomla\Input\Input[]` | Input objects |
 | protected static `$loaded` | `bool` | Is all GLOBAL added |    
+
 ### Methods
 
 #### `Joomla\Input\Cookie::__construct`
@@ -659,6 +660,7 @@ This is an abstracted input class used to manage retrieving data from the applic
 | protected `$data` | `array` | Input data. |
 | protected `$inputs` | `Joomla\Input\Input[]` | Input objects |
 | protected static `$loaded` | `bool` | Is all GLOBAL added |    
+
 ### Methods
 
 #### `Joomla\Input\Input::__construct`
@@ -1289,6 +1291,7 @@ Joomla! Input Files Class
 | protected `$data` | `array` | Input data. |
 | protected `$inputs` | `Joomla\Input\Input[]` | Input objects |
 | protected static `$loaded` | `bool` | Is all GLOBAL added |    
+
 ### Methods
 
 #### `Joomla\Input\Files::__construct`
@@ -1965,6 +1968,7 @@ the standard Input interface.
 | protected `$data` | `array` | Input data. |
 | protected `$inputs` | `Joomla\Input\Input[]` | Input objects |
 | protected static `$loaded` | `bool` | Is all GLOBAL added |    
+
 ### Methods
 
 #### `Joomla\Input\Json::__construct`

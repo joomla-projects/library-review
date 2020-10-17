@@ -196,6 +196,7 @@ Implementation of EventInterface.
 | protected `$name` | `string` | The event name. |
 | protected `$arguments` | `array` | The event arguments. |
 | protected `$stopped` | `bool` | A flag to see if the event propagation is stopped. |    
+
 ### Methods
 
 #### `Joomla\Event\AbstractEvent::__construct`
@@ -749,6 +750,7 @@ prioritized listeners.
 | protected `$events` | `Joomla\Event\EventInterface[]` | An array of registered events indexed by |
 | protected `$listenerFilter` | `string` | A regular expression that will filter listener method names. |
 | protected `$listeners` | `Joomla\Event\ListenersPriorityQueue[]` | An array of ListenersPriorityQueue indexed |    
+
 ### Methods
 
 #### `Joomla\Event\Dispatcher::setEvent`
@@ -1497,6 +1499,7 @@ Default Event class.
 | protected `$name` | `string` | The event name. |
 | protected `$arguments` | `array` | The event arguments. |
 | protected `$stopped` | `bool` | A flag to see if the event propagation is stopped. |    
+
 ### Methods
 
 #### `Joomla\Event\Event::addArgument`
@@ -2298,6 +2301,7 @@ the listeners won't manipulate it.
 | protected `$name` | `string` | The event name. |
 | protected `$arguments` | `array` | The event arguments. |
 | protected `$stopped` | `bool` | A flag to see if the event propagation is stopped. |    
+
 ### Methods
 
 #### `Joomla\Event\EventImmutable::__construct`
@@ -2877,6 +2881,7 @@ One instance of ListenersPriorityQueue is used per Event in the Dispatcher.
 |----------|------|-------------|
 | protected `$queue` | `SplPriorityQueue` | The inner priority queue. |
 | protected `$storage` | `SplObjectStorage` | A copy of the listeners contained in the queue |    
+
 ### Methods
 
 #### `Joomla\Event\ListenersPriorityQueue::__construct`

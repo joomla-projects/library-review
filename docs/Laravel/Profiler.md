@@ -559,6 +559,7 @@ Implementation of ProfilerInterface.
 | protected `$startMemoryBytes` | `int` | The memory usage in bytes when the first point was marked. |
 | protected `$memoryPeakBytes` | `int` | The memory peak in bytes during the profiler run. |
 | protected `$renderer` | `Joomla\Profiler\ProfilerRendererInterface` | The profiler renderer. |    
+
 ### Methods
 
 #### `Joomla\Profiler\Profiler::__construct`
@@ -1317,6 +1318,7 @@ Implementation of ProfilePointInterface.
 | protected `$name` | `string` | The profile point name. |
 | protected `$time` | `float` | The elapsed time in seconds since the first point in the profiler it belongs to was marked. |
 | protected `$memoryBytes` | `int` | The allocated amount of memory in bytes since the first point in the profiler it belongs to was marked. |    
+
 ### Methods
 
 #### `Joomla\Profiler\ProfilePoint::__construct`

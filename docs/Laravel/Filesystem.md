@@ -623,6 +623,7 @@ FTP client class
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$instances` | `Joomla\Filesystem\Clients\FtpClient[]` | FtpClient instances container. |    
+
 ### Methods
 
 #### `Joomla\Filesystem\Clients\FtpClient::__construct`
@@ -1960,6 +1961,7 @@ Exception class for handling errors in the Filesystem package
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Filesystem\Exception\FilesystemException::__construct`
@@ -2336,6 +2338,7 @@ To use compression with a network stream use a filter |
 | protected `$context` | `string` | Context to use when opening the connection |
 | protected `$contextOptions` | `array` | Context options; used to rebuild the context |
 | protected `$openmode` | `string` | The mode under which the file was opened |    
+
 ### Methods
 
 #### `Joomla\Filesystem\Stream::__construct`
@@ -4192,6 +4195,7 @@ string buffers with the standard PHP filesystem I/O methods.
 | public `$position` | `int` | Stream position |
 | public `$name` | `string` | Buffer name |
 | public `$buffers` | `array` | Buffer hash |    
+
 ### Methods
 
 #### `Joomla\Filesystem\Buffer::stream_open`
@@ -4488,6 +4492,7 @@ This class allows you to use a PHP string in the same way that you would normall
 | protected `$pos` | `int` | Current position |
 | protected `$len` | `string` | Length of the string |
 | protected `$stat` | `array` | Statistics for a file |    
+
 ### Methods
 
 #### `Joomla\Filesystem\Stream\StringWrapper::stream_open`
@@ -4912,6 +4917,7 @@ A Unified Diff Format Patcher class
 | protected `$removals` | `array` | Removal files |
 | protected `$patches` | `array` | Patches |
 | protected static `$instance` | `Joomla\Filesystem\Patcher` | Singleton instance of this class |    
+
 ### Methods
 
 #### `Joomla\Filesystem\Patcher::__construct`

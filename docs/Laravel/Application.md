@@ -57,19 +57,20 @@ Class to model a Web Client.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| protected `$platform` | `int` | The detected platform on which the web client runs. |
-| protected `$mobile` | `bool` | True if the web client is a mobile device. |
-| protected `$engine` | `int` | The detected rendering engine used by the web client. |
-| protected `$browser` | `int` | The detected browser used by the web client. |
-| protected `$browserVersion` | `string` | The detected browser version used by the web client. |
-| protected `$languages` | `array` | The priority order detected accepted languages for the client. |
-| protected `$encodings` | `array` | The priority order detected accepted encodings for the client. |
-| protected `$userAgent` | `string` | The web client&#039;s user agent string. |
-| protected `$acceptEncoding` | `string` | The web client&#039;s accepted encoding string. |
-| protected `$acceptLanguage` | `string` | The web client&#039;s accepted languages string. |
-| protected `$robot` | `bool` | True if the web client is a robot. |
-| protected `$detection` | `array` | An array of flags determining whether or not a detection routine has been run. |
-| protected `$headers` | `array` | An array of headers sent by client |    
+| read-only `$platform` | `int` | The detected platform on which the web client runs. |
+| read-only `$mobile` | `bool` | True if the web client is a mobile device. |
+| read-only `$engine` | `int` | The detected rendering engine used by the web client. |
+| read-only `$browser` | `int` | The detected browser used by the web client. |
+| read-only `$browserVersion` | `string` | The detected browser version used by the web client. |
+| read-only `$languages` | `array` | The priority order detected accepted languages for the client. |
+| read-only `$encodings` | `array` | The priority order detected accepted encodings for the client. |
+| read-only `$userAgent` | `string` | The web client's user agent string. |
+| read-only `$acceptEncoding` | `string` | The web client's accepted encoding string. |
+| read-only `$acceptLanguage` | `string` | The web client's accepted languages string. |
+| read-only `$robot` | `bool` | True if the web client is a robot. |
+| read-only `$detection` | `array` | An array of flags determining whether or not a detection routine has been run. |
+| read-only `$headers` | `array` | An array of headers sent by client |    
+
 ### Methods
 
 #### `Joomla\Application\Web\WebClient::__construct`
@@ -486,6 +487,7 @@ Joomla Framework Base Application Class
 |----------|------|-------------|
 | protected `$config` | `Joomla\Registry\Registry` | The application configuration object. |
 | public `$input` | `Joomla\Input\Input` | The application input object. |    
+
 ### Methods
 
 #### `Joomla\Application\AbstractApplication::__construct`
@@ -1008,6 +1010,7 @@ Base class for a Joomla! Web application.
 | protected `$response` | `object` | The application response object. |
 | protected `$config` | `Joomla\Registry\Registry` | The application configuration object. |
 | public `$input` | `Joomla\Input\Input` | The application input object. |    
+
 ### Methods
 
 #### `Joomla\Application\AbstractWebApplication::__construct`

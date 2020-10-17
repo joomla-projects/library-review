@@ -66,6 +66,7 @@ Joomla Framework Abstract View Class
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$model` | `Joomla\Model\ModelInterface` | The model object. |    
+
 ### Methods
 
 #### `Joomla\View\AbstractView::__construct`

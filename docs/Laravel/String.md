@@ -11,6 +11,7 @@ String handling class for UTF-8 data wrapping the phputf8 library. All functions
 | Property | Type | Description |
 |----------|------|-------------|
 | protected static `$incrementStyles` | `array` | Increment styles. |    
+
 ### Methods
 
 #### `Joomla\String\StringHelper::increment`

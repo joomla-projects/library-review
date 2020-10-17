@@ -13,7 +13,8 @@ A path router.
 | protected `$controllerPrefix` | `string` | Controller class name prefix for creating controller objects by name. |
 | protected `$default` | `string` | The default page controller name for an empty route. |
 | protected `$input` | `Joomla\Input\Input` | An input object from which to derive the route. |
-| protected `$maps` | `array` | An array of rules, each rule being an associative array(&#039;regex&#039;=&gt; $regex, &#039;vars&#039; =&gt; $vars, &#039;controller&#039; =&gt; $controller) |    
+| protected `$maps` | `array` | An array of rules, each rule being an associative array('regex'=> $regex, 'vars' => $vars, 'controller' => $controller) |    
+
 ### Methods
 
 #### `Joomla\Router\Router::__construct`

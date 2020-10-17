@@ -104,6 +104,7 @@ The Horde Project <http://www.horde.org>
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | Holds the options array. |    
+
 ### Methods
 
 #### `Joomla\Archive\Gzip::__construct`
@@ -288,6 +289,7 @@ An Archive handling class
 |----------|------|-------------|
 | protected `$adapters` | `Joomla\Archive\ExtractableInterface[]` | The array of instantiated archive adapters. |
 | public `$options` | `array` or `ArrayAccess` | Holds the options array. |    
+
 ### Methods
 
 #### `Joomla\Archive\Archive::__construct`
@@ -497,6 +499,7 @@ The Horde Project <http://www.horde.org>
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | Holds the options array. |    
+
 ### Methods
 
 #### `Joomla\Archive\Zip::__construct`
@@ -913,6 +916,7 @@ Bzip2 format adapter for the Archive package
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | Holds the options array. |    
+
 ### Methods
 
 #### `Joomla\Archive\Bzip2::__construct`
@@ -1058,6 +1062,7 @@ The Horde Project <http://www.horde.org>
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$options` | `array` or `ArrayAccess` | Holds the options array. |    
+
 ### Methods
 
 #### `Joomla\Archive\Tar::__construct`

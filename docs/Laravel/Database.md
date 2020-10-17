@@ -286,6 +286,7 @@ PDO Database Iterator.
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Pdo\PdoIterator::count`
@@ -734,6 +735,7 @@ PDO Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Pdo\PdoQuery::__call`
@@ -3670,6 +3672,7 @@ Joomla Framework PDO Database Driver Class
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected static `$dbMinimum` | `string` | The minimum supported database version. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Pdo\PdoDriver::__construct`
@@ -7140,6 +7143,7 @@ Joomla Framework Database Exporter Class
 | protected `$db` | `Joomla\Database\DatabaseDriver` | The database connector to use for exporting structure and/or data. |
 | protected `$from` | `array` | An array input sources (table names). |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\DatabaseExporter::__construct`
@@ -7571,6 +7575,7 @@ Exception class defining an unsupported database object
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Database\Exception\UnsupportedAdapterException::__construct`
@@ -7930,6 +7935,7 @@ Exception class defining an error connecting to the database platform
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Database\Exception\ConnectionFailureException::__construct`
@@ -8289,6 +8295,7 @@ Exception class defining an error executing a statement
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Database\Exception\ExecutionFailureException::__construct`
@@ -8696,6 +8703,7 @@ MySQL Database Iterator
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysql\MysqlIterator::count`
@@ -9145,6 +9153,7 @@ MySQL database driver supporting PDO based connections
 | protected `$errorMsg` | `string` | The database error message. |
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysql\MysqlDriver::__construct`
@@ -12676,6 +12685,7 @@ MySQL Database Importer.
 | protected `$from` | `mixed` | The input source. |
 | protected `$asFormat` | `string` | The type of input format. |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysql\MysqlImporter::getAddKeySql`
@@ -13504,6 +13514,7 @@ MySQL Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysql\MysqlQuery::bind`
@@ -16628,6 +16639,7 @@ MySQL Database Exporter.
 | protected `$db` | `Joomla\Database\Mysql\DatabaseDriver` | The database connector to use for exporting structure and/or data. |
 | protected `$from` | `array` | An array input sources (table names). |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysql\MysqlExporter::buildXml`
@@ -17066,6 +17078,7 @@ Joomla Framework Database Importer Class
 | protected `$from` | `mixed` | The input source. |
 | protected `$asFormat` | `string` | The type of input format. |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\DatabaseImporter::__construct`
@@ -17838,6 +17851,7 @@ Joomla Framework Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\DatabaseQuery::__call`
@@ -20752,9 +20766,10 @@ Query Element Class.
 
 | Property | Type | Description |
 |----------|------|-------------|
-| protected `$name` | `string` | The name of the element. |
-| protected `$elements` | `array` | An array of elements. |
-| protected `$glue` | `string` | Glue piece. |    
+| read-only `$name` | `string` | The name of the element. |
+| read-only `$elements` | `array` | An array of elements. |
+| read-only `$glue` | `string` | Glue piece. |    
+
 ### Methods
 
 #### `Joomla\Database\Query\QueryElement::__construct`
@@ -21110,6 +21125,7 @@ SQL Server Database Iterator.
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlsrv\SqlsrvIterator::count`
@@ -21561,6 +21577,7 @@ SQL Server Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlsrv\SqlsrvQuery::__toString`
@@ -24561,6 +24578,7 @@ SQL Server Database Driver
 | protected `$errorMsg` | `string` | The database error message. |
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlsrv\SqlsrvDriver::isSupported`
@@ -27940,6 +27958,7 @@ MySQLi Database Iterator.
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysqli\MysqliIterator::count`
@@ -28371,6 +28390,7 @@ MySQLi Database Exporter.
 | protected `$db` | `Joomla\Database\Mysqli\DatabaseDriver` | The database connector to use for exporting structure and/or data. |
 | protected `$from` | `array` | An array input sources (table names). |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysqli\MysqliExporter::buildXml`
@@ -28829,6 +28849,7 @@ MySQLi Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysqli\MysqliQuery::bind`
@@ -31953,6 +31974,7 @@ MySQLi Database Importer.
 | protected `$from` | `mixed` | The input source. |
 | protected `$asFormat` | `string` | The type of input format. |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysqli\MysqliImporter::check`
@@ -32823,6 +32845,7 @@ MySQLi Database Driver
 | protected `$errorMsg` | `string` | The database error message. |
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Mysqli\MysqliDriver::__construct`
@@ -36101,6 +36124,7 @@ PDO PostgreSQL Database Iterator.
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Pgsql\PgsqlIterator::count`
@@ -36532,6 +36556,7 @@ PDO PostgreSQL Database Exporter.
 | protected `$db` | `Joomla\Database\Pgsql\DatabaseDriver` | The database connector to use for exporting structure and/or data. |
 | protected `$from` | `array` | An array input sources (table names). |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\Pgsql\PgsqlExporter::check`
@@ -36988,6 +37013,7 @@ PostgreSQL PDO Database Driver
 | protected `$errorMsg` | `string` | The database error message. |
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Pgsql\PgsqlDriver::__construct`
@@ -40777,9 +40803,9 @@ PDO PostgreSQL Query Building Class.
 | Property | Type | Description |
 |----------|------|-------------|
 | protected `$bounded` | `mixed` | Holds key / value pair of bound objects. |
-| protected `$forUpdate` | `object` | The FOR UPDATE element used in &quot;FOR UPDATE&quot; lock |
-| protected `$forShare` | `object` | The FOR SHARE element used in &quot;FOR SHARE&quot; lock |
-| protected `$noWait` | `object` | The NOWAIT element used in &quot;FOR SHARE&quot; and &quot;FOR UPDATE&quot; lock |
+| protected `$forUpdate` | `object` | The FOR UPDATE element used in "FOR UPDATE" lock |
+| protected `$forShare` | `object` | The FOR SHARE element used in "FOR SHARE" lock |
+| protected `$noWait` | `object` | The NOWAIT element used in "FOR SHARE" and "FOR UPDATE" lock |
 | protected `$limit` | `object` | The LIMIT element |
 | protected `$offset` | `object` | The OFFSET element |
 | protected `$returning` | `object` | The RETURNING element of INSERT INTO |
@@ -40805,6 +40831,7 @@ PDO PostgreSQL Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Pgsql\PgsqlQuery::bind`
@@ -44191,6 +44218,7 @@ PDO PostgreSQL Database Importer.
 | protected `$from` | `mixed` | The input source. |
 | protected `$asFormat` | `string` | The type of input format. |
 | protected `$options` | `object` | An array of options for the exporter. |    
+
 ### Methods
 
 #### `Joomla\Database\Pgsql\PgsqlImporter::check`
@@ -45180,6 +45208,7 @@ Joomla Framework Database Driver Class
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\DatabaseIterator::__construct`
@@ -45629,6 +45658,7 @@ SQLite Database Iterator.
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlite\SqliteIterator::count`
@@ -46080,6 +46110,7 @@ SQLite Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlite\SqliteQuery::bind`
@@ -49231,6 +49262,7 @@ SQLite database driver supporting PDO based connections
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected static `$dbMinimum` | `string` | The minimum supported database version. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlite\SqliteDriver::__destruct`
@@ -52721,6 +52753,7 @@ Joomla Framework Database Driver Class
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected static `$dbMinimum` | `string` | The minimum supported database version. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\DatabaseDriver::getConnectors`
@@ -55831,6 +55864,7 @@ SQL Azure Database Driver
 | protected `$errorMsg` | `string` | The database error message. |
 | protected static `$instances` | `array` | DatabaseDriver instances container. |
 | protected `$transactionDepth` | `int` | The depth of the current transaction. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlazure\SqlazureDriver::isSupported`
@@ -59210,6 +59244,7 @@ SQL Azure Database Iterator.
 |----------|------|-------------|
 | protected `$cursor` | `mixed` | The database cursor. |
 | protected `$class` | `string` | The class of object to create. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlazure\SqlazureIterator::count`
@@ -59661,6 +59696,7 @@ SQL Azure Query Building Class.
 | protected `$exec` | `Query\QueryElement` | The exec element. |
 | protected `$union` | `Query\QueryElement` | The union element. |
 | protected `$unionAll` | `Query\QueryElement` | The unionAll element. |    
+
 ### Methods
 
 #### `Joomla\Database\Sqlazure\SqlazureQuery::__toString`

@@ -21,6 +21,7 @@ Interface for read-only access to Uris.
 | public `QUERY` | `int` | 64 | Include the query string |
 | public `FRAGMENT` | `int` | 128 | Include the fragment |
 | public `ALL` | `int` | 255 | Include all available url parts (scheme, user, pass, host, port, path, query, fragment) |    
+
 ### Methods
 
 #### `Joomla\Uri\UriInterface::__toString`
@@ -587,6 +588,7 @@ This is an immutable version of the uri class.
 | protected `$query` | `string` | Query |
 | protected `$fragment` | `string` | Anchor |
 | protected `$vars` | `array` | Query variable hash |    
+
 ### Methods
 
 #### `Joomla\Uri\UriImmutable::__set`
@@ -1512,6 +1514,7 @@ to access and manipulate a URI.
 | protected `$query` | `string` | Query |
 | protected `$fragment` | `string` | Anchor |
 | protected `$vars` | `array` | Query variable hash |    
+
 ### Methods
 
 #### `Joomla\Uri\Uri::setVar`
@@ -2793,6 +2796,7 @@ This class should be considered an implementation detail. Typehint against UriIn
 | protected `$query` | `string` | Query |
 | protected `$fragment` | `string` | Anchor |
 | protected `$vars` | `array` | Query variable hash |    
+
 ### Methods
 
 #### `Joomla\Uri\AbstractUri::__construct`

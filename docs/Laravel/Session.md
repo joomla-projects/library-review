@@ -26,6 +26,7 @@ more advanced features such as expire timeouts.
 | protected `$cookie_samesite` | `mixed` | The configuration of the SameSite cookie. |
 | protected static `$instance` | `Joomla\Session\Session` | Session instances container. |
 | protected `$storeName` | `string` | The type of storage for the session. |    
+
 ### Methods
 
 #### `Joomla\Session\Session::__construct`

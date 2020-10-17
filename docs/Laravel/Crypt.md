@@ -160,6 +160,7 @@ Exception representing an invalid Joomla\Crypt\Key type for a cipher
 | protected `$code` | `` |  |
 | protected `$file` | `` |  |
 | protected `$line` | `` |  |    
+
 ### Methods
 
 #### `Joomla\Crypt\Exception\InvalidKeyTypeException::__construct`
@@ -802,6 +803,7 @@ Test class for JCrypt.
 | protected `$backupStaticAttributesBlacklist` | `array` |  |
 | protected `$runTestInSeparateProcess` | `bool` |  |
 | protected `$preserveGlobalState` | `bool` |  |    
+
 ### Methods
 
 #### `Joomla\Crypt\Tests\CryptTest::setUp`
@@ -11757,7 +11759,8 @@ Encryption key object for the Joomla Framework.
 |----------|------|-------------|
 | public `$private` | `string` | The private key. |
 | public `$public` | `string` | The public key. |
-| protected `$type` | `string` | The key type. |    
+| read-only `$type` | `string` | The key type. |    
+
 ### Methods
 
 #### `Joomla\Crypt\Key::__construct`

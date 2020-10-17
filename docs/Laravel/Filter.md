@@ -33,6 +33,7 @@ Original Contributors: Gianpaolo Racca, Ghislain Picard, Marco Wandschneider, Ch
 | public `$xssAuto` | `int` | A flag for XSS checks. Only auto clean essentials = 0, Allow clean blocked tags/attr = 1 |
 | public `$tagBlacklist` | `array` | The list of the default blocked tags. |
 | public `$attrBlacklist` | `array` | The list of the default blacklisted tag attributes. All event handlers implicit. |    
+
 ### Methods
 
 #### `Joomla\Filter\InputFilter::__construct`

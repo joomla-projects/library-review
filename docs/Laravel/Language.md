@@ -287,6 +287,7 @@ Text handling class.
 |----------|------|-------------|
 | protected static `$strings` | `array` | JavaScript strings |
 | protected static `$lang` | `Joomla\Language\Language` | Language instance |    
+
 ### Methods
 
 #### `Joomla\Language\Text::getLanguage`
@@ -720,7 +721,7 @@ Languages/translation handler class
 |----------|------|-------------|
 | protected static `$languages` | `array` | Language instance container |
 | protected static `$languageFactory` | `Joomla\Language\LanguageFactory` | Cached LanguageFactory object |
-| protected `$debug` | `bool` | Debug language, If true, highlights if string isn&#039;t found. |
+| protected `$debug` | `bool` | Debug language, If true, highlights if string isn't found. |
 | protected `$default` | `string` | The default language, used when a language file in the requested language does not exist. |
 | protected `$orphans` | `array` | An array of orphaned text. |
 | protected `$metadata` | `array` | Array holding the language metadata. |
@@ -738,6 +739,7 @@ Languages/translation handler class
 | protected `$lowerLimitSearchWordCallback` | `callable` | Name of the lowerLimitSearchWordCallback function for this language. |
 | protected `$upperLimitSearchWordCallback` | `callable` | Name of the uppperLimitSearchWordCallback function for this language |
 | protected `$searchDisplayedCharactersNumberCallback` | `callable` | Name of the searchDisplayedCharactersNumberCallback function for this language. |    
+
 ### Methods
 
 #### `Joomla\Language\Language::__construct`
@@ -2236,6 +2238,7 @@ See copyright and link information above.
 |----------|------|-------------|
 | protected `$cache` | `array` | An internal cache of stemmed tokens. |
 | protected static `$instances` | `Joomla\Language\Stemmer\Stemmer[]` | Stemmer instances. |    
+
 ### Methods
 
 #### `Joomla\Language\Stemmer\Porteren::stem`

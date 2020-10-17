@@ -228,6 +228,7 @@ Abstract AuthenticationStrategy for username/password based authentication
 |----------|------|-------------|
 | protected `$passwordHandler` | `Joomla\Authentication\Password\HandlerInterface` | The password handler to validate the password against. |
 | protected `$status` | `int` | The last authentication status. |    
+
 ### Methods
 
 #### `Joomla\Authentication\AbstractUsernamePasswordAuthenticationStrategy::__construct`
@@ -497,6 +498,7 @@ Joomla Framework Database Strategy Authentication class
 |----------|------|-------------|
 | protected `$passwordHandler` | `Joomla\Authentication\Password\HandlerInterface` | The password handler to validate the password against. |
 | protected `$status` | `int` | The last authentication status. |    
+
 ### Methods
 
 #### `Joomla\Authentication\Strategies\DatabaseStrategy::__construct`
@@ -776,6 +778,7 @@ Joomla Framework Local Strategy Authentication class
 |----------|------|-------------|
 | protected `$passwordHandler` | `Joomla\Authentication\Password\HandlerInterface` | The password handler to validate the password against. |
 | protected `$status` | `int` | The last authentication status. |    
+
 ### Methods
 
 #### `Joomla\Authentication\Strategies\LocalStrategy::__construct`
@@ -1477,6 +1480,7 @@ Joomla Framework Authentication Class
 | public `NO_SUCH_USER` | `int` | 3 | Credentials were provided but the user did not exist in the credential store. |
 | public `NO_CREDENTIALS` | `int` | 4 | There were no credentials found. |
 | public `INCOMPLETE_CREDENTIALS` | `int` | 5 | There were partial credentials found but they were not complete. |    
+
 ### Methods
 
 #### `Joomla\Authentication\Authentication::addStrategy`
